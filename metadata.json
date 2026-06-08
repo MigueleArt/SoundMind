@@ -1,0 +1,6 @@
+{
+  "name": "SoundMind",
+  "description": "Descubre música nueva mediante un análisis inteligente de tu estado de ánimo, preferencias de sonido y psicología musical respaldada por IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

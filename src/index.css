@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Frosted Glass Theme Styling overrides */
+body {
+  background-color: #050505;
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Frosted Glass glassmorphism classes */
+.frosted-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.frosted-panel-light {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* Backdrop ambient glow animation */
+@keyframes glow-shift {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(40px, -60px) scale(1.1);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
+}
+
+.animate-glow-slow {
+  animation: glow-shift 22s infinite alternate ease-in-out;
+}
+
+.animate-glow-slower {
+  animation: glow-shift 32s infinite alternate-reverse ease-in-out;
+}
