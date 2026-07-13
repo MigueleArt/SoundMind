@@ -1,0 +1,1197 @@
+{
+  "users": [
+    {
+      "id": "7cec52e62b06359d",
+      "username": "testuser_1",
+      "hash": "6af69631dd28310fddcd5057fa6a382bf9bbdc7bdb31f78d2450fd1829bde321611bae48ad045f5c3f35779fd7f110df23e997eb27bce156e9aad76b8c92b073",
+      "salt": "a90df180612d9afa224f7919b9b12528",
+      "createdAt": "2026-07-03T20:38:58.268Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "session-0af69dc177a3",
+      "userId": "guest",
+      "createdAt": "2026-07-03T20:38:13.101Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "instrumental",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 4,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 160,
+          "acousticness": 30,
+          "instrumentalness": 90,
+          "danceability": 40
+        },
+        "createdAt": "2026-07-03T20:38:13.101Z"
+      },
+      "recommendations": [
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "k-pop"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0c6f6c66",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 93,
+            "energy": 67,
+            "tempo": 158,
+            "acousticness": 33,
+            "instrumentalness": 87,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "k-pop"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e03be695",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 83,
+            "energy": 63,
+            "tempo": 156,
+            "acousticness": 23,
+            "instrumentalness": 96,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "classic",
+            "k-pop"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-2a3decfd",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 93,
+            "energy": 60,
+            "tempo": 157,
+            "acousticness": 38,
+            "instrumentalness": 86,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 95,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-2f04056f",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 83,
+            "energy": 74,
+            "tempo": 147,
+            "acousticness": 35,
+            "instrumentalness": 81,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Levitating",
+          "artist": "Dua Lipa",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-280216a2",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Levitating%20Dua%20Lipa",
+          "attributes": {
+            "valence": 82,
+            "energy": 65,
+            "tempo": 145,
+            "acousticness": 30,
+            "instrumentalness": 83,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "indie",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-5237e7ba",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/As%20It%20Was%20Harry%20Styles",
+          "attributes": {
+            "valence": 92,
+            "energy": 56,
+            "tempo": 166,
+            "acousticness": 27,
+            "instrumentalness": 85,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-4b664a4f",
+          "coverUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 79,
+            "energy": 72,
+            "tempo": 160,
+            "acousticness": 28,
+            "instrumentalness": 89,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "k-pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-14fb31a4",
+          "coverUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 89,
+            "energy": 70,
+            "tempo": 165,
+            "acousticness": 30,
+            "instrumentalness": 90,
+            "danceability": 40
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-c242769c290f",
+      "userId": "7cec52e62b06359d",
+      "createdAt": "2026-07-03T20:39:51.962Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "acustico",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 80,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-07-03T20:39:51.962Z"
+      },
+      "recommendations": [
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "indie",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0bdbe347",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/As%20It%20Was%20Harry%20Styles",
+          "attributes": {
+            "valence": 92,
+            "energy": 62,
+            "tempo": 116,
+            "acousticness": 71,
+            "instrumentalness": 27,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "k-pop"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-067e0493",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 89,
+            "energy": 67,
+            "tempo": 139,
+            "acousticness": 78,
+            "instrumentalness": 27,
+            "danceability": 37
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "k-pop"
+          ],
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e156b3ad",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 80,
+            "energy": 56,
+            "tempo": 132,
+            "acousticness": 86,
+            "instrumentalness": 11,
+            "danceability": 30
+          }
+        },
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "k-pop"
+          ],
+          "score": 98,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e0d1efc2",
+          "coverUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 92,
+            "energy": 69,
+            "tempo": 130,
+            "acousticness": 81,
+            "instrumentalness": 12,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-09566e77",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 78,
+            "energy": 66,
+            "tempo": 127,
+            "acousticness": 89,
+            "instrumentalness": 17,
+            "danceability": 34
+          }
+        },
+        {
+          "title": "Strobe",
+          "artist": "deadmau5",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e349f44b",
+          "coverUrl": "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Strobe%20deadmau5",
+          "attributes": {
+            "valence": 83,
+            "energy": 67,
+            "tempo": 126,
+            "acousticness": 72,
+            "instrumentalness": 21,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6bff797c",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 88,
+            "energy": 61,
+            "tempo": 138,
+            "acousticness": 84,
+            "instrumentalness": 29,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "Despacito",
+          "artist": "Luis Fonsi",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "latin",
+            "pop",
+            "k-pop"
+          ],
+          "score": 92,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-4f7b32fd",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Despacito%20Luis%20Fonsi",
+          "attributes": {
+            "valence": 76,
+            "energy": 74,
+            "tempo": 135,
+            "acousticness": 88,
+            "instrumentalness": 16,
+            "danceability": 47
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-2718f6ea451c",
+      "userId": "7cec52e62b06359d",
+      "createdAt": "2026-07-03T20:42:36.938Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "rock",
+          "jazz"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "rock",
+          "jazz"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-07-03T20:42:36.938Z"
+      },
+      "recommendations": [
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "rock",
+            "jazz"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-a6dc5551",
+          "coverUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 76,
+            "energy": 64,
+            "tempo": 117,
+            "acousticness": 20,
+            "instrumentalness": 15,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "rock",
+            "jazz"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0304a278",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 84,
+            "energy": 60,
+            "tempo": 119,
+            "acousticness": 34,
+            "instrumentalness": 12,
+            "danceability": 49
+          }
+        },
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "jazz"
+          ],
+          "score": 95,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-32c4c841",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 85,
+            "energy": 56,
+            "tempo": 123,
+            "acousticness": 31,
+            "instrumentalness": 10,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Levitating",
+          "artist": "Dua Lipa",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "jazz"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6f55b4c8",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Levitating%20Dua%20Lipa",
+          "attributes": {
+            "valence": 82,
+            "energy": 60,
+            "tempo": 122,
+            "acousticness": 27,
+            "instrumentalness": 21,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "rock"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-3b52cf23",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 77,
+            "energy": 73,
+            "tempo": 117,
+            "acousticness": 20,
+            "instrumentalness": 16,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Tusa",
+          "artist": "Karol G",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "latin",
+            "rock",
+            "jazz"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c8d7e7d0",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 87,
+            "energy": 65,
+            "tempo": 136,
+            "acousticness": 22,
+            "instrumentalness": 12,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "rock",
+            "jazz"
+          ],
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c7036231",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 84,
+            "energy": 71,
+            "tempo": 142,
+            "acousticness": 28,
+            "instrumentalness": 28,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Strobe",
+          "artist": "deadmau5",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "rock",
+            "jazz"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-4edcf04f",
+          "coverUrl": "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Strobe%20deadmau5",
+          "attributes": {
+            "valence": 86,
+            "energy": 55,
+            "tempo": 134,
+            "acousticness": 35,
+            "instrumentalness": 16,
+            "danceability": 47
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-9f5caf8fc01e",
+      "userId": "7cec52e62b06359d",
+      "createdAt": "2026-07-03T20:44:17.053Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "rock"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "rock"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-07-03T20:44:17.053Z"
+      },
+      "recommendations": [
+        {
+          "title": "Tusa",
+          "artist": "Karol G",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "latin",
+            "rock"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-dddc7816",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 79,
+            "energy": 64,
+            "tempo": 135,
+            "acousticness": 39,
+            "instrumentalness": 15,
+            "danceability": 46
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-7b6293fe",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 93,
+            "energy": 59,
+            "tempo": 144,
+            "acousticness": 34,
+            "instrumentalness": 25,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "rock"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-1363509e",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 83,
+            "energy": 59,
+            "tempo": 143,
+            "acousticness": 23,
+            "instrumentalness": 22,
+            "danceability": 46
+          }
+        },
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "rock"
+          ],
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-bafc770c",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 86,
+            "energy": 58,
+            "tempo": 143,
+            "acousticness": 35,
+            "instrumentalness": 11,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Cruel Summer",
+          "artist": "Taylor Swift",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-5f4a6269",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cruel%20Summer%20Taylor%20Swift",
+          "attributes": {
+            "valence": 79,
+            "energy": 67,
+            "tempo": 137,
+            "acousticness": 27,
+            "instrumentalness": 23,
+            "danceability": 46
+          }
+        },
+        {
+          "title": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "classic"
+          ],
+          "score": 87,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c5ad014f",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 75,
+            "energy": 67,
+            "tempo": 119,
+            "acousticness": 39,
+            "instrumentalness": 17,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-4114b3de",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 76,
+            "energy": 55,
+            "tempo": 128,
+            "acousticness": 30,
+            "instrumentalness": 27,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "Master of Puppets",
+          "artist": "Metallica",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "metal",
+            "rock"
+          ],
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c8503c78",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 83,
+            "energy": 58,
+            "tempo": 126,
+            "acousticness": 32,
+            "instrumentalness": 15,
+            "danceability": 48
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-a3431f7070a9",
+      "userId": "7cec52e62b06359d",
+      "createdAt": "2026-07-03T20:55:49.937Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "ambient"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Tu estado de ánimo refleja una luminosa armonía entre la calma y el optimismo, ideal para el disfrute pausado de la tarde. Buscas un refugio sonoro que combine la sutil calidez del ambient con ritmos sutiles y vibrantes que estimulan los sentidos de forma orgánica. Esta selección equilibra magistralmente texturas instrumentales de guitarra y piano con melodías reconfortantes para acompañar tu momento de ocio.",
+        "dominantGenres": [
+          "Ambient Pop",
+          "Downtempo",
+          "Chillwave",
+          "Folktronica"
+        ],
+        "vibes": [
+          "Cálido",
+          "Luminoso",
+          "Relajante",
+          "Ensueño"
+        ],
+        "attributes": {
+          "valence": 75,
+          "energy": 55,
+          "tempo": 105,
+          "acousticness": 45,
+          "instrumentalness": 50,
+          "danceability": 65
+        },
+        "createdAt": "2026-07-03T20:55:49.937Z"
+      },
+      "recommendations": [
+        {
+          "title": "Awake",
+          "artist": "Tycho",
+          "album": "Awake",
+          "genres": [
+            "Ambient",
+            "Chillwave",
+            "Downtempo"
+          ],
+          "score": 95,
+          "whyRecommend": "Sus guitarras brillantes y sintetizadores analógicos capturan perfectamente la calidez de una tarde alegre y relajada.",
+          "id": "song-2bcc04e5",
+          "coverUrl": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Awake%20Tycho",
+          "attributes": {
+            "valence": 84,
+            "energy": 55,
+            "tempo": 96,
+            "acousticness": 38,
+            "instrumentalness": 42,
+            "danceability": 70
+          }
+        },
+        {
+          "title": "Cirrus",
+          "artist": "Bonobo",
+          "album": "The North Borders",
+          "genres": [
+            "Downtempo",
+            "Electronic",
+            "Trip Hop"
+          ],
+          "score": 92,
+          "whyRecommend": "El tintineo de su percusión y sus texturas orgánicas crean un flujo optimista ideal para el ocio vespertino.",
+          "id": "song-649e96c6",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cirrus%20Bonobo",
+          "attributes": {
+            "valence": 78,
+            "energy": 58,
+            "tempo": 100,
+            "acousticness": 35,
+            "instrumentalness": 46,
+            "danceability": 61
+          }
+        },
+        {
+          "title": "Running",
+          "artist": "Helado Negro",
+          "album": "This Is How You Smile",
+          "genres": [
+            "Ambient Pop",
+            "Indie Folk"
+          ],
+          "score": 90,
+          "whyRecommend": "Su piano sutil y atmósfera flotante en español e inglés transmiten una nostalgia luminosa y reconfortante.",
+          "id": "song-e1032552",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Running%20Helado%20Negro",
+          "attributes": {
+            "valence": 68,
+            "energy": 59,
+            "tempo": 117,
+            "acousticness": 50,
+            "instrumentalness": 58,
+            "danceability": 65
+          }
+        },
+        {
+          "title": "Mañana Tepozteco",
+          "artist": "El Búho",
+          "album": "Balance",
+          "genres": [
+            "Folktronica",
+            "Organic House",
+            "Ambient"
+          ],
+          "score": 88,
+          "whyRecommend": "Mezcla elementos orgánicos y una cadencia alegre que evoca un atardecer vibrante y natural.",
+          "id": "song-fe97ec08",
+          "coverUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Ma%C3%B1ana%20Tepozteco%20El%20B%C3%BAho",
+          "attributes": {
+            "valence": 73,
+            "energy": 58,
+            "tempo": 102,
+            "acousticness": 54,
+            "instrumentalness": 46,
+            "danceability": 73
+          }
+        },
+        {
+          "title": "Vámono",
+          "artist": "Buscabulla",
+          "album": "Regresa",
+          "genres": [
+            "Chillwave",
+            "Indie Pop"
+          ],
+          "score": 91,
+          "whyRecommend": "Combina un ritmo bailable de tempo medio con voces etéreas en español que invitan al disfrute pausado.",
+          "id": "song-d13a8a2b",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/V%C3%A1mono%20Buscabulla",
+          "attributes": {
+            "valence": 84,
+            "energy": 45,
+            "tempo": 107,
+            "acousticness": 37,
+            "instrumentalness": 54,
+            "danceability": 71
+          }
+        },
+        {
+          "title": "Cumbia del Olvido",
+          "artist": "Nicola Cruz",
+          "album": "Prender el Alma",
+          "genres": [
+            "Folktronica",
+            "Downtempo"
+          ],
+          "score": 89,
+          "whyRecommend": "La guitarra acústica guía una melodía andina brillante y de tempo moderado, perfecta para desconectar.",
+          "id": "song-6529eb25",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cumbia%20del%20Olvido%20Nicola%20Cruz",
+          "attributes": {
+            "valence": 79,
+            "energy": 48,
+            "tempo": 96,
+            "acousticness": 53,
+            "instrumentalness": 55,
+            "danceability": 67
+          }
+        },
+        {
+          "title": "Bunny",
+          "artist": "Tourist",
+          "album": "Everyday",
+          "genres": [
+            "Indietronica",
+            "Ambient House"
+          ],
+          "score": 93,
+          "whyRecommend": "Una pieza instrumentalmente rica y alegre, llena de texturas luminosas que elevan el ánimo sin abrumar.",
+          "id": "song-4ecb71dd",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bunny%20Tourist",
+          "attributes": {
+            "valence": 76,
+            "energy": 54,
+            "tempo": 99,
+            "acousticness": 44,
+            "instrumentalness": 57,
+            "danceability": 56
+          }
+        },
+        {
+          "title": "Ylang Ylang",
+          "artist": "FKJ",
+          "album": "Ylang Ylang EP",
+          "genres": [
+            "Nu-Jazz",
+            "Ambient",
+            "Downtempo"
+          ],
+          "score": 94,
+          "whyRecommend": "El piano majestuoso y los acordes cálidos crean una atmósfera de ensueño sumamente pacífica y alegre.",
+          "id": "song-0af9e2c3",
+          "coverUrl": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Ylang%20Ylang%20FKJ",
+          "attributes": {
+            "valence": 84,
+            "energy": 52,
+            "tempo": 104,
+            "acousticness": 51,
+            "instrumentalness": 47,
+            "danceability": 55
+          }
+        }
+      ],
+      "likes": {}
+    }
+  ]
+}

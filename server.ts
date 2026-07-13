@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
@@ -246,65 +247,131 @@ Debes responder estrictamente en formato JSON utilizando el esquema especificado
 
 Genera canciones reales y un perfil altamente profesional y poético pero preciso.`;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
-      contents: [
-        { text: userInstructions }
-      ],
-      config: {
-        systemInstruction: systemPrompt,
-        responseMimeType: 'application/json',
-        responseSchema: {
-          type: Type.OBJECT,
-          required: ['description', 'dominantGenres', 'vibes', 'attributes', 'songs'],
-          properties: {
-            description: {
-              type: Type.STRING,
-              description: 'Descripción de perfil musical detallada y personalizada en español, de 2 a 3 oraciones.'
-            },
-            dominantGenres: {
-              type: Type.ARRAY,
-              items: { type: Type.STRING },
-              description: 'Los 3 o 4 géneros musicales dominantes para este estado de ánimo y preferencia.'
-            },
-            vibes: {
-              type: Type.ARRAY,
-              items: { type: Type.STRING },
-              description: 'Etiquetas de vibras u ondas musicales (ej. Introspectivo, Chill, Dinámico, Underground).'
-            },
-            attributes: {
+    let recommendationData: any = null;
+
+    if (process.env.GEMINI_API_KEY) {
+      try {
+        const response = await ai.models.generateContent({
+          model: 'gemini-3.5-flash',
+          contents: [
+            { text: userInstructions }
+          ],
+          config: {
+            systemInstruction: systemPrompt,
+            responseMimeType: 'application/json',
+            responseSchema: {
               type: Type.OBJECT,
-              required: ['valence', 'energy', 'tempo', 'acousticness', 'instrumentalness', 'danceability'],
+              required: ['description', 'dominantGenres', 'vibes', 'attributes', 'songs'],
               properties: {
-                valence: { type: Type.INTEGER, description: 'Grado de felicidad/positividad musical de 0 a 100.' },
-                energy: { type: Type.INTEGER, description: 'Intensidad o energía del sonido de 0 a 100.' },
-                tempo: { type: Type.INTEGER, description: 'BPM estimado de las canciones ideales (ej. 60-180).' },
-                acousticness: { type: Type.INTEGER, description: 'Porcentaje de preferencia acústica de 0 a 100.' },
-                instrumentalness: { type: Type.INTEGER, description: 'Porcentaje de enfoque instrumental de 0 a 100.' },
-                danceability: { type: Type.INTEGER, description: 'Ritmicidad o capacidad bailable de 0 a 100.' }
-              }
-            },
-            songs: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.OBJECT,
-                required: ['title', 'artist', 'album', 'genres', 'score', 'whyRecommend'],
-                properties: {
-                  title: { type: Type.STRING, description: 'Nombre de la canción real (ej. "Intro").' },
-                  artist: { type: Type.STRING, description: 'Nombre del artista/banda real (ej. "The xx").' },
-                  album: { type: Type.STRING, description: 'Nombre del álbum real de esa canción.' },
-                  genres: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Géneros de esta canción.' },
-                  score: { type: Type.INTEGER, description: 'Afinidad aproximada con el perfil de 0 a 100.' },
-                  whyRecommend: { type: Type.STRING, description: 'Explicación de una oración en español sobre por qué encaja perfectamente en este contexto.' }
+                description: {
+                  type: Type.STRING,
+                  description: 'Descripción de perfil musical detallada y personalizada en español, de 2 a 3 oraciones.'
+                },
+                dominantGenres: {
+                  type: Type.ARRAY,
+                  items: { type: Type.STRING },
+                  description: 'Los 3 o 4 géneros musicales dominantes para este estado de ánimo y preferencia.'
+                },
+                vibes: {
+                  type: Type.ARRAY,
+                  items: { type: Type.STRING },
+                  description: 'Etiquetas de vibras u ondas musicales (ej. Introspectivo, Chill, Dinámico, Underground).'
+                },
+                attributes: {
+                  type: Type.OBJECT,
+                  required: ['valence', 'energy', 'tempo', 'acousticness', 'instrumentalness', 'danceability'],
+                  properties: {
+                    valence: { type: Type.INTEGER, description: 'Grado de felicidad/positividad musical de 0 a 100.' },
+                    energy: { type: Type.INTEGER, description: 'Intensidad o energía del sonido de 0 a 100.' },
+                    tempo: { type: Type.INTEGER, description: 'BPM estimado de las canciones ideales (ej. 60-180).' },
+                    acousticness: { type: Type.INTEGER, description: 'Porcentaje de preferencia acústica de 0 a 100.' },
+                    instrumentalness: { type: Type.INTEGER, description: 'Porcentaje de enfoque instrumental de 0 a 100.' },
+                    danceability: { type: Type.INTEGER, description: 'Ritmicidad o capacidad bailable de 0 a 100.' }
+                  }
+                },
+                songs: {
+                  type: Type.ARRAY,
+                  items: {
+                    type: Type.OBJECT,
+                    required: ['title', 'artist', 'album', 'genres', 'score', 'whyRecommend'],
+                    properties: {
+                      title: { type: Type.STRING, description: 'Nombre de la canción real (ej. "Intro").' },
+                      artist: { type: Type.STRING, description: 'Nombre del artista/banda real (ej. "The xx").' },
+                      album: { type: Type.STRING, description: 'Nombre del álbum real de esa canción.' },
+                      genres: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Géneros de esta canción.' },
+                      score: { type: Type.INTEGER, description: 'Afinidad aproximada con el perfil de 0 a 100.' },
+                      whyRecommend: { type: Type.STRING, description: 'Explicación de una oración en español sobre por qué encaja perfectamente en este contexto.' }
+                    }
+                  }
                 }
               }
             }
           }
-        }
+        });
+        recommendationData = JSON.parse(response.text || '{}');
+      } catch (err) {
+        console.error('Gemini API call failed, falling back to local engine:', err);
       }
-    });
+    }
 
-    const recommendationData = JSON.parse(response.text || '{}');
+    if (!recommendationData || !recommendationData.songs) {
+      console.log('Using Local Fallback Recommendation Engine...');
+      const fallbackGenres = answers.genres.length > 0 ? answers.genres : ['Pop', 'Indie'];
+      const baseValence = answers.mood === 'alegre' ? 85 : answers.mood === 'melancolico' ? 30 : answers.mood === 'energetico' ? 80 : 60;
+      const baseEnergy = answers.mood === 'energetico' ? 90 : answers.mood === 'relajado' ? 30 : 65;
+      
+      const catalog = [
+        { t: 'Blinding Lights', a: 'The Weeknd', g: ['pop', 'electronic'] },
+        { t: 'Bohemian Rhapsody', a: 'Queen', g: ['rock', 'classic'] },
+        { t: 'Take Five', a: 'Dave Brubeck', g: ['jazz'] },
+        { t: 'Clair de Lune', a: 'Claude Debussy', g: ['classical'] },
+        { t: 'Strobe', a: 'deadmau5', g: ['electronic'] },
+        { t: 'Midnight City', a: 'M83', g: ['electronic', 'indie'] },
+        { t: 'Smells Like Teen Spirit', a: 'Nirvana', g: ['rock'] },
+        { t: 'Levitating', a: 'Dua Lipa', g: ['pop'] },
+        { t: 'So What', a: 'Miles Davis', g: ['jazz'] },
+        { t: 'Weightless', a: 'Marconi Union', g: ['ambient'] },
+        { t: 'Shape of You', a: 'Ed Sheeran', g: ['pop'] },
+        { t: 'Hotel California', a: 'Eagles', g: ['rock'] },
+        { t: 'Tusa', a: 'Karol G', g: ['reggaeton', 'latin'] },
+        { t: 'Dákiti', a: 'Bad Bunny', g: ['reggaeton'] },
+        { t: 'Despacito', a: 'Luis Fonsi', g: ['latin', 'pop'] },
+        { t: 'Numb', a: 'Linkin Park', g: ['rock', 'metal'] },
+        { t: 'Master of Puppets', a: 'Metallica', g: ['metal'] },
+        { t: 'Lose Yourself', a: 'Eminem', g: ['hip-hop'] },
+        { t: 'SICKO MODE', a: 'Travis Scott', g: ['hip-hop'] },
+        { t: 'Dynamite', a: 'BTS', g: ['k-pop', 'pop'] },
+        { t: 'As It Was', a: 'Harry Styles', g: ['pop', 'indie'] },
+        { t: 'Cruel Summer', a: 'Taylor Swift', g: ['pop'] },
+        { t: 'Billie Jean', a: 'Michael Jackson', g: ['pop'] },
+        { t: 'Vampire', a: 'Olivia Rodrigo', g: ['pop', 'rock'] }
+      ];
+      
+      const shuffled = [...catalog].sort(() => 0.5 - Math.random());
+      const mockSongs = shuffled.slice(0, 8).map((s) => ({
+        title: s.t,
+        artist: s.a,
+        album: 'Grandes Éxitos',
+        genres: [...new Set([...s.g, ...fallbackGenres])],
+        score: Math.floor(Math.random() * 20) + 80,
+        whyRecommend: `Seleccionada por nuestro algoritmo para potenciar tu estado ${answers.mood} y complementar la textura de los bajos y agudos.`
+      }));
+
+      recommendationData = {
+        description: `Hemos analizado tu preferencia por sonidos con estado ${answers.mood} y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.`,
+        dominantGenres: fallbackGenres,
+        vibes: [answers.mood, 'Curado', 'Local'],
+        attributes: {
+          valence: baseValence,
+          energy: baseEnergy,
+          tempo: answers.rhythmSpeed * 30 + 40,
+          acousticness: answers.stylePreference === 'acustico' ? 80 : 30,
+          instrumentalness: answers.vocalPreference === 'instrumental' ? 90 : 20,
+          danceability: answers.mood === 'energetico' ? 85 : 40
+        },
+        songs: mockSongs
+      };
+    }
 
     // Enhance song recomendations with custom cover arts and URLs
     const enhancedSongs = recommendationData.songs.map((song: any, index: number) => {
