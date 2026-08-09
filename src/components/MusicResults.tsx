@@ -4,12 +4,14 @@
  */
 
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Play, ThumbsUp, ThumbsDown, RotateCcw, Share2, Sparkles, Music, Disc, Headphones 
+  Play, ThumbsUp, ThumbsDown, RotateCcw, Share2, Sparkles, Music, Disc, Headphones, X 
 } from 'lucide-react';
 import { RecommendationHistoryItem, SongRecommendation } from '../types';
 import AudioRadarChart from './AudioRadarChart';
+import SocialCard from './SocialCard';
+import { usePlayerStore } from '../store/usePlayerStore';
 
 interface MusicResultsProps {
   session: RecommendationHistoryItem;
@@ -21,6 +23,8 @@ interface MusicResultsProps {
 export default function MusicResults({ session, onLikeChange, onReset, likedState }: MusicResultsProps) {
   const { profile, recommendations } = session;
   const [copiedLink, setCopiedLink] = useState(false);
+  const [showSocialModal, setShowSocialModal] = useState(false);
+  const { playSong } = usePlayerStore();
 
   function handleShare() {
     navigator.clipboard.writeText(window.location.href);
@@ -52,6 +56,15 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Botón para abrir la tarjeta de Instagram */}
+            <button
+              onClick={() => setShowSocialModal(true)}
+              className="flex items-center gap-2 text-xs font-semibold px-4 py-2.5 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 rounded-xl text-purple-300 cursor-pointer transition-all active:scale-95 shadow-lg shadow-purple-500/10"
+            >
+              <Sparkles size={14} />
+              <span>Crear Historia</span>
+            </button>
+
             <button
               onClick={handleShare}
               className="flex items-center gap-2 text-xs font-semibold px-4 py-2.5 bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 rounded-xl text-gray-300 hover:text-white cursor-pointer transition-colors"
@@ -59,6 +72,7 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
               <Share2 size={14} />
               <span>{copiedLink ? 'Compartido' : 'Compartir'}</span>
             </button>
+
             <button
               onClick={onReset}
               className="flex items-center gap-2 text-xs font-semibold px-4 py-2.5 bg-gradient-to-r from-purple-600 to-cyan-500 hover:opacity-90 border border-white/10 rounded-xl text-white shadow-lg cursor-pointer transition-all active:scale-95"
@@ -127,7 +141,6 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {recommendations.map((song: SongRecommendation, idx) => {
-            const hasFeedback = likedState[song.id] !== undefined;
             const isLiked = likedState[song.id] === true;
             const isDisliked = likedState[song.id] === false;
 
@@ -149,14 +162,12 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
                   />
                   {/* Hover play button */}
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <a 
-                      href={song.spotifyUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <button 
+                      onClick={() => playSong(song)}
                       className="p-2 bg-cyan-500 rounded-full text-white cursor-pointer shadow-lg hover:scale-110 active:scale-95 transition-all"
                     >
                       <Play size={14} fill="currentColor" />
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -219,17 +230,15 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
                         <ThumbsDown size={12} fill={isDisliked ? 'currentColor' : 'none'} />
                       </button>
 
-                      {/* Spotify Listening links */}
-                      <a
-                        href={song.spotifyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      {/* Spotify / Reproductor Button */}
+                      <button
+                        onClick={() => playSong(song)}
                         className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-lg border border-white/10 text-cyan-300 bg-white/5 hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
-                        title="Buscar en Spotify"
+                        title="Reproducir pista"
                       >
                         <Headphones size={10} />
                         <span>Escuchar</span>
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -245,6 +254,37 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
           Las recomendaciones cambian en tiempo real de acuerdo a tu feedback o modificaciones de tu test. ¡Tu SoundMind aprende constantemente con cada interacción!
         </p>
       </div>
+
+      {/* Modal para descargar la tarjeta de Instagram Story */}
+      <AnimatePresence>
+        {showSocialModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowSocialModal(false)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            />
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative z-10 bg-zinc-950 border border-white/10 rounded-3xl p-6 shadow-2xl max-w-sm w-full flex flex-col items-center"
+            >
+              <button
+                onClick={() => setShowSocialModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white p-1 rounded-lg hover:bg-white/10 cursor-pointer transition-colors"
+              >
+                <X size={18} />
+              </button>
+
+              <SocialCard profile={profile} />
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
