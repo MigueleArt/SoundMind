@@ -18,6 +18,7 @@ import { supabaseAdmin } from './backend/config/supabase';
 import { authRouter } from './backend/routes/auth.routes';
 import { historyRouter } from './backend/routes/history.routes';
 import { sessionRouter } from './backend/routes/session.routes';
+import { recommendationRouter } from './backend/routes/recommendation.routes';
 
 // Initialize server variables
 const app = express();
@@ -221,9 +222,8 @@ app.get('/api/health/database', async (_req, res) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/history', historyRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/history', historyRouter);
 app.use('/api/sessions', sessionRouter);
+app.use('/api/recommendations', recommendationRouter);
 
 // --- API Endpoints ---
 
