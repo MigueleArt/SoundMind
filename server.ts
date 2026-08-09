@@ -10,10 +10,15 @@ import fs from 'fs';
 import crypto from 'crypto';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
+import helmet from 'helmet';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+import { env } from './backend/config/env';
+import { supabaseAdmin } from './backend/config/supabase';
 
 // Initialize server variables
 const app = express();
-const PORT = 3000;
+const PORT = env.PORT;
 const DB_FILE = path.join(process.cwd(), 'db.json');
 const TOKEN_SECRET = process.env.TOKEN_SECRET || 'soundmind_super_secret_key_2026';
 
@@ -86,7 +91,32 @@ function authenticate(req: any, res: any, next: any) {
 }
 
 // Parse request body
-app.use(express.json());
+app.disable('x-powered-by');
+
+app.use(helmet({
+  contentSecurityPolicy: false
+}));
+
+app.use(cors({
+  origin: env.APP_URL,
+  credentials: true
+}));
+
+app.use(express.json({
+  limit: '100kb'
+}));
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: 'Demasiados intentos. Intenta nuevamente en 15 minutos.'
+  }
+});
+
+app.use('/api/auth', authLimiter);
 
 // Set up Gemini instance
 const ai = new GoogleGenAI({
@@ -142,6 +172,49 @@ function getRandomCover(genres: string[]): string {
   const index = Math.floor(Math.random() * collection.length);
   return collection[index];
 }
+
+app.get('/api/health', (_req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'SoundMind API',
+    environment: env.NODE_ENV,
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get('/api/health/database', async (_req, res) => {
+  try {
+    const { error } = await supabaseAdmin
+      .from('profiles')
+      .select('id', {
+        count: 'exact',
+        head: true
+      });
+
+    if (error) {
+      console.error('Supabase health check failed:', error);
+
+      return res.status(503).json({
+        status: 'error',
+        database: 'disconnected'
+      });
+    }
+
+    return res.json({
+      status: 'ok',
+      database: 'connected',
+      provider: 'Supabase PostgreSQL',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Database health check error:', error);
+
+    return res.status(503).json({
+      status: 'error',
+      database: 'disconnected'
+    });
+  }
+});
 
 // --- API Endpoints ---
 
