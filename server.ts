@@ -3,112 +3,54 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import 'dotenv/config';
-import express from 'express';
-import path from 'path';
-import fs from 'fs';
-import crypto from 'crypto';
-import { createServer as createViteServer } from 'vite';
-import { GoogleGenAI, Type } from '@google/genai';
-import helmet from 'helmet';
-import cors from 'cors';
-import rateLimit from 'express-rate-limit';
-import { env } from './backend/config/env';
-import { supabaseAdmin } from './backend/config/supabase';
-import { authRouter } from './backend/routes/auth.routes';
-import { historyRouter } from './backend/routes/history.routes';
-import { sessionRouter } from './backend/routes/session.routes';
-import { recommendationRouter } from './backend/routes/recommendation.routes';
+import "dotenv/config";
+import express from "express";
+import path from "path";
+import fs from "fs";
+import crypto from "crypto";
+import { createServer as createViteServer } from "vite";
+import { GoogleGenAI, Type } from "@google/genai";
+import helmet from "helmet";
+import cors from "cors";
+import rateLimit from "express-rate-limit";
+import { env } from "./backend/config/env";
+import { supabaseAdmin } from "./backend/config/supabase";
+import { authRouter } from "./backend/routes/auth.routes";
+import { historyRouter } from "./backend/routes/history.routes";
+import { sessionRouter } from "./backend/routes/session.routes";
+import { recommendationRouter } from "./backend/routes/recommendation.routes";
+import { optionalAuth } from "./backend/middleware/auth";
+import { createMusicSession } from "./backend/services/session.service";
+import { findHistoryItem } from "./backend/repositories/history.repository";
+import { mapHistoryItem } from "./backend/services/history.service";
 
 // Initialize server variables
 const app = express();
 const PORT = env.PORT;
-const DB_FILE = path.join(process.cwd(), 'db.json');
-const TOKEN_SECRET = process.env.TOKEN_SECRET || 'soundmind_super_secret_key_2026';
 
-// Initialize database with default structure if it doesn't exist
-function initDb() {
-  if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify({ users: [], history: [] }, null, 2));
-  }
-}
-initDb();
 
-// Database read/write helpers
-function readDb() {
-  try {
-    const data = fs.readFileSync(DB_FILE, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error reading DB, resetting database:', error);
-    return { users: [], history: [] };
-  }
-}
-
-function writeDb(data: any) {
-  try {
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error writing DB:', error);
-  }
-}
-
-// Password hashing helper using Node's native scrypt
-function hashPassword(password: string, salt: string = crypto.randomBytes(16).toString('hex')): { hash: string; salt: string } {
-  const hash = crypto.scryptSync(password, salt, 64).toString('hex');
-  return { hash, salt };
-}
-
-// Lightweight JWT-like session token implementation
-function generateToken(payload: any): string {
-  const header = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64url');
-  const body = Buffer.from(JSON.stringify({ ...payload, exp: Date.now() + 24 * 60 * 60 * 1000 })).toString('base64url');
-  const signature = crypto.createHmac('sha256', TOKEN_SECRET).update(`${header}.${body}`).digest('base64url');
-  return `${header}.${body}.${signature}`;
-}
-
-function verifyToken(token: string): any {
-  try {
-    const [header, body, signature] = token.split('.');
-    if (!header || !body || !signature) return null;
-    const computedSignature = crypto.createHmac('sha256', TOKEN_SECRET).update(`${header}.${body}`).digest('base64url');
-    if (signature !== computedSignature) return null;
-    const decoded = JSON.parse(Buffer.from(body, 'base64url').toString('utf8'));
-    if (decoded.exp < Date.now()) return null; // Expired
-    return decoded;
-  } catch (err) {
-    return null;
-  }
-}
-
-// Middleware to authenticate user
-function authenticate(req: any, res: any, next: any) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    req.user = null;
-    return next();
-  }
-  const token = authHeader.split(' ')[1];
-  const payload = verifyToken(token);
-  req.user = payload ? { id: payload.id, username: payload.username } : null;
-  next();
-}
 
 // Parse request body
-app.disable('x-powered-by');
+app.disable("x-powered-by");
 
-app.use(helmet({
-  contentSecurityPolicy: false
-}));
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
 
-app.use(cors({
-  origin: env.APP_URL,
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: env.APP_URL,
+    credentials: true,
+  }),
+);
 
-app.use(express.json({
-  limit: '100kb'
-}));
+app.use(
+  express.json({
+    limit: "100kb",
+  }),
+);
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -116,195 +58,132 @@ const authLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   message: {
-    error: 'Demasiados intentos. Intenta nuevamente en 15 minutos.'
-  }
+    error: "Demasiados intentos. Intenta nuevamente en 15 minutos.",
+  },
 });
 
-app.use('/api/auth', authLimiter);
+app.use("/api/auth", authLimiter);
 
 // Set up Gemini instance
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
   httpOptions: {
     headers: {
-      'User-Agent': 'aistudio-build',
-    }
-  }
+      "User-Agent": "aistudio-build",
+    },
+  },
 });
 
 // Aesthetically selected Unsplash images matching various music genres and atmospheres
 const COVER_IMAGES: Record<string, string[]> = {
   electronic: [
-    'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1482440308425-276ad0f28b19?q=80&w=600&auto=format&fit=crop'
+    "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?q=80&w=600&auto=format&fit=crop",
   ],
   rock: [
-    'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop'
+    "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
   ],
   jazz: [
-    'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop'
+    "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
   ],
   pop: [
-    'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop'
+    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
   ],
   classical: [
-    'https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop'
+    "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop",
   ],
   ambient: [
-    'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop'
+    "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop",
   ],
   generic: [
-    'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop'
-  ]
+    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+  ],
 };
 
 function getRandomCover(genres: string[]): string {
-  const matchedGenre = genres.map(g => g.toLowerCase()).find(g => COVER_IMAGES[g]);
-  const collection = matchedGenre ? COVER_IMAGES[matchedGenre] : COVER_IMAGES.generic;
+  const matchedGenre = genres
+    .map((g) => g.toLowerCase())
+    .find((g) => COVER_IMAGES[g]);
+  const collection = matchedGenre
+    ? COVER_IMAGES[matchedGenre]
+    : COVER_IMAGES.generic;
   const index = Math.floor(Math.random() * collection.length);
   return collection[index];
 }
 
-app.get('/api/health', (_req, res) => {
+app.get("/api/health", (_req, res) => {
   res.json({
-    status: 'ok',
-    service: 'SoundMind API',
+    status: "ok",
+    service: "SoundMind API",
     environment: env.NODE_ENV,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
-app.get('/api/health/database', async (_req, res) => {
+app.get("/api/health/database", async (_req, res) => {
   try {
-    const { error } = await supabaseAdmin
-      .from('profiles')
-      .select('id', {
-        count: 'exact',
-        head: true
-      });
+    const { error } = await supabaseAdmin.from("profiles").select("id", {
+      count: "exact",
+      head: true,
+    });
 
     if (error) {
-      console.error('Supabase health check failed:', error);
+      console.error("Supabase health check failed:", error);
 
       return res.status(503).json({
-        status: 'error',
-        database: 'disconnected'
+        status: "error",
+        database: "disconnected",
       });
     }
 
     return res.json({
-      status: 'ok',
-      database: 'connected',
-      provider: 'Supabase PostgreSQL',
-      timestamp: new Date().toISOString()
+      status: "ok",
+      database: "connected",
+      provider: "Supabase PostgreSQL",
+      timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('Database health check error:', error);
+    console.error("Database health check error:", error);
 
     return res.status(503).json({
-      status: 'error',
-      database: 'disconnected'
+      status: "error",
+      database: "disconnected",
     });
   }
 });
 
-app.use('/api/auth', authRouter);
-app.use('/api/history', historyRouter);
-app.use('/api/sessions', sessionRouter);
-app.use('/api/recommendations', recommendationRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/history", historyRouter);
+app.use("/api/sessions", sessionRouter);
+app.use("/api/recommendations", recommendationRouter);
 
-// --- API Endpoints ---
-
-// 1. Authentication Check
-app.get('/api/auth/me', authenticate, (req: any, res) => {
-  if (!req.user) {
-    return res.status(401).json({ error: 'No autorizado' });
-  }
-  res.json({ user: req.user });
-});
-
-// 2. User Registration
-app.post('/api/auth/register', (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    return res.status(400).json({ error: 'El nombre de usuario y contraseña son obligatorios' });
-  }
-
-  const db = readDb();
-  const existingUser = db.users.find((u: any) => u.username.toLowerCase() === username.toLowerCase());
-  if (existingUser) {
-    return res.status(400).json({ error: 'El nombre de usuario ya está registrado' });
-  }
-
-  const { hash, salt } = hashPassword(password);
-  const newUser = {
-    id: crypto.randomBytes(8).toString('hex'),
-    username,
-    hash,
-    salt,
-    createdAt: new Date().toISOString()
-  };
-
-  db.users.push(newUser);
-  writeDb(db);
-
-  const token = generateToken({ id: newUser.id, username: newUser.username });
-  res.status(210).json({ token, user: { id: newUser.id, username: newUser.username } });
-});
-
-// 3. User Login
-app.post('/api/auth/login', (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    return res.status(400).json({ error: 'El nombre de usuario y contraseña son obligatorios' });
-  }
-
-  const db = readDb();
-  const user = db.users.find((u: any) => u.username.toLowerCase() === username.toLowerCase());
-  if (!user) {
-    return res.status(401).json({ error: 'Credenciales inválidas' });
-  }
-
-  const { hash } = hashPassword(password, user.salt);
-  if (hash !== user.hash) {
-    return res.status(401).json({ error: 'Credenciales inválidas' });
-  }
-
-  const token = generateToken({ id: user.id, username: user.username });
-  res.json({ token, user: { id: user.id, username: user.username } });
-});
-
-// 4. Get User Profile and History
-app.get('/api/history', authenticate, (req: any, res) => {
-  const db = readDb();
-  // Filter history of recommendations for this user
-  // If guest (not logged in), return empty history or can store guest sessions in localStorage via frontend
-  const userId = req.user ? req.user.id : 'guest';
-  const userHistory = db.history.filter((h: any) => h.userId === userId || (!req.user && h.userId === 'guest'));
-  res.json({ history: userHistory });
-});
 
 // 5. Generate Recommendation (Using Gemini API for Data Science & Music Psychology profiling!)
-app.post('/api/recommendations/generate', authenticate, async (req: any, res) => {
-  const { answers } = req.body;
-  if (!answers) {
-    return res.status(400).json({ error: 'Respuestas del cuestionario faltantes' });
-  }
+app.post(
+  "/api/recommendations/generate",
+  optionalAuth,
+  async (req: any, res) => {
+    const { answers } = req.body;
+    if (!answers) {
+      return res
+        .status(400)
+        .json({ error: "Respuestas del cuestionario faltantes" });
+    }
 
-  try {
-    const systemPrompt = `Eres un motor avanzado de recomendación musical y psicólogo del sonido llamado "SoundMind".
+    try {
+      const systemPrompt = `Eres un motor avanzado de recomendación musical y psicólogo del sonido llamado "SoundMind".
 Analizarás las respuestas de un cuestionario musical de un usuario y generarás:
 1. Un perfil psicológico musical personalizado (un análisis descriptivo rico de su estado de ánimo y gustos).
 2. Un mapeo preciso de las preferencias del usuario a métricas de ciencia de datos musicales de 0 a 100 (valence, energy, tempo, acousticness, instrumentalness, danceability).
@@ -312,247 +191,405 @@ Analizarás las respuestas de un cuestionario musical de un usuario y generarás
 
 Debes responder estrictamente en formato JSON utilizando el esquema especificado. NO incluyas markdown, solo responde con el objeto de datos. Las canciones deben ser reales, artistas conocidos y acordes con sus filtros y exclusiones de forma estricta.`;
 
-    const userInstructions = `Respuestas del cuestionario del usuario:
-- Emoción actual: ${answers.mood} ${answers.mood === 'alegre' ? '(Alegre/Vibrante)' : answers.mood === 'melancolico' ? '(Melancólico/Pensativo)' : answers.mood === 'energetico' ? '(Energético/Motivado)' : answers.mood === 'relajado' ? '(Relajado/Calmo)' : '(Nostálgico)'}
+      const userInstructions = `Respuestas del cuestionario del usuario:
+- Emoción actual: ${answers.mood} ${answers.mood === "alegre" ? "(Alegre/Vibrante)" : answers.mood === "melancolico" ? "(Melancólico/Pensativo)" : answers.mood === "energetico" ? "(Energético/Motivado)" : answers.mood === "relajado" ? "(Relajado/Calmo)" : "(Nostálgico)"}
 - Actividad: ${answers.activity}
 - Momento del día: ${answers.timeOfDay}
-- Géneros favoritos: ${answers.genres.join(', ')}
+- Géneros favoritos: ${answers.genres.join(", ")}
 - Preferencia de canto: ${answers.vocalPreference}
-- Idiomas aceptados: ${answers.languages.join(', ')}
+- Idiomas aceptados: ${answers.languages.join(", ")}
 - Intensidad de tempo (1 muy lento - 5 muy rápido): ${answers.rhythmSpeed}
 - Estilo vocal preferido: ${answers.vocalsType}
-- Instrumentos de interés: ${answers.instruments.join(', ')}
+- Instrumentos de interés: ${answers.instruments.join(", ")}
 - Peso de graves (bass): ${answers.bassWeight}
 - Acústica/Flujo de sonido: ${answers.stylePreference}
-- Canciones/artistas de referencia: ${answers.recentFavorites.filter(Boolean).join(', ')}
-- Exclusiones definitivas: ${answers.exclusions || 'Ninguna'}
+- Canciones/artistas de referencia: ${answers.recentFavorites.filter(Boolean).join(", ")}
+- Exclusiones definitivas: ${answers.exclusions || "Ninguna"}
 
 Genera canciones reales y un perfil altamente profesional y poético pero preciso.`;
 
-    let recommendationData: any = null;
+      let recommendationData: any = null;
 
-    if (process.env.GEMINI_API_KEY) {
-      try {
-        const response = await ai.models.generateContent({
-          model: 'gemini-3.5-flash',
-          contents: [
-            { text: userInstructions }
-          ],
-          config: {
-            systemInstruction: systemPrompt,
-            responseMimeType: 'application/json',
-            responseSchema: {
-              type: Type.OBJECT,
-              required: ['description', 'dominantGenres', 'vibes', 'attributes', 'songs'],
-              properties: {
-                description: {
-                  type: Type.STRING,
-                  description: 'Descripción de perfil musical detallada y personalizada en español, de 2 a 3 oraciones.'
-                },
-                dominantGenres: {
-                  type: Type.ARRAY,
-                  items: { type: Type.STRING },
-                  description: 'Los 3 o 4 géneros musicales dominantes para este estado de ánimo y preferencia.'
-                },
-                vibes: {
-                  type: Type.ARRAY,
-                  items: { type: Type.STRING },
-                  description: 'Etiquetas de vibras u ondas musicales (ej. Introspectivo, Chill, Dinámico, Underground).'
-                },
-                attributes: {
-                  type: Type.OBJECT,
-                  required: ['valence', 'energy', 'tempo', 'acousticness', 'instrumentalness', 'danceability'],
-                  properties: {
-                    valence: { type: Type.INTEGER, description: 'Grado de felicidad/positividad musical de 0 a 100.' },
-                    energy: { type: Type.INTEGER, description: 'Intensidad o energía del sonido de 0 a 100.' },
-                    tempo: { type: Type.INTEGER, description: 'BPM estimado de las canciones ideales (ej. 60-180).' },
-                    acousticness: { type: Type.INTEGER, description: 'Porcentaje de preferencia acústica de 0 a 100.' },
-                    instrumentalness: { type: Type.INTEGER, description: 'Porcentaje de enfoque instrumental de 0 a 100.' },
-                    danceability: { type: Type.INTEGER, description: 'Ritmicidad o capacidad bailable de 0 a 100.' }
-                  }
-                },
-                songs: {
-                  type: Type.ARRAY,
-                  items: {
+      if (process.env.GEMINI_API_KEY) {
+        try {
+          const response = await ai.models.generateContent({
+            model: "gemini-3.5-flash",
+            contents: [{ text: userInstructions }],
+            config: {
+              systemInstruction: systemPrompt,
+              responseMimeType: "application/json",
+              responseSchema: {
+                type: Type.OBJECT,
+                required: [
+                  "description",
+                  "dominantGenres",
+                  "vibes",
+                  "attributes",
+                  "songs",
+                ],
+                properties: {
+                  description: {
+                    type: Type.STRING,
+                    description:
+                      "Descripción de perfil musical detallada y personalizada en español, de 2 a 3 oraciones.",
+                  },
+                  dominantGenres: {
+                    type: Type.ARRAY,
+                    items: { type: Type.STRING },
+                    description:
+                      "Los 3 o 4 géneros musicales dominantes para este estado de ánimo y preferencia.",
+                  },
+                  vibes: {
+                    type: Type.ARRAY,
+                    items: { type: Type.STRING },
+                    description:
+                      "Etiquetas de vibras u ondas musicales (ej. Introspectivo, Chill, Dinámico, Underground).",
+                  },
+                  attributes: {
                     type: Type.OBJECT,
-                    required: ['title', 'artist', 'album', 'genres', 'score', 'whyRecommend'],
+                    required: [
+                      "valence",
+                      "energy",
+                      "tempo",
+                      "acousticness",
+                      "instrumentalness",
+                      "danceability",
+                    ],
                     properties: {
-                      title: { type: Type.STRING, description: 'Nombre de la canción real (ej. "Intro").' },
-                      artist: { type: Type.STRING, description: 'Nombre del artista/banda real (ej. "The xx").' },
-                      album: { type: Type.STRING, description: 'Nombre del álbum real de esa canción.' },
-                      genres: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Géneros de esta canción.' },
-                      score: { type: Type.INTEGER, description: 'Afinidad aproximada con el perfil de 0 a 100.' },
-                      whyRecommend: { type: Type.STRING, description: 'Explicación de una oración en español sobre por qué encaja perfectamente en este contexto.' }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        });
-        recommendationData = JSON.parse(response.text || '{}');
-      } catch (err) {
-        console.error('Gemini API call failed, falling back to local engine:', err);
-      }
-    }
-
-    if (!recommendationData || !recommendationData.songs) {
-      console.log('Using Local Fallback Recommendation Engine...');
-      const fallbackGenres = answers.genres.length > 0 ? answers.genres : ['Pop', 'Indie'];
-      const baseValence = answers.mood === 'alegre' ? 85 : answers.mood === 'melancolico' ? 30 : answers.mood === 'energetico' ? 80 : 60;
-      const baseEnergy = answers.mood === 'energetico' ? 90 : answers.mood === 'relajado' ? 30 : 65;
-      
-      const catalog = [
-        { t: 'Blinding Lights', a: 'The Weeknd', g: ['pop', 'electronic'] },
-        { t: 'Bohemian Rhapsody', a: 'Queen', g: ['rock', 'classic'] },
-        { t: 'Take Five', a: 'Dave Brubeck', g: ['jazz'] },
-        { t: 'Clair de Lune', a: 'Claude Debussy', g: ['classical'] },
-        { t: 'Strobe', a: 'deadmau5', g: ['electronic'] },
-        { t: 'Midnight City', a: 'M83', g: ['electronic', 'indie'] },
-        { t: 'Smells Like Teen Spirit', a: 'Nirvana', g: ['rock'] },
-        { t: 'Levitating', a: 'Dua Lipa', g: ['pop'] },
-        { t: 'So What', a: 'Miles Davis', g: ['jazz'] },
-        { t: 'Weightless', a: 'Marconi Union', g: ['ambient'] },
-        { t: 'Shape of You', a: 'Ed Sheeran', g: ['pop'] },
-        { t: 'Hotel California', a: 'Eagles', g: ['rock'] },
-        { t: 'Tusa', a: 'Karol G', g: ['reggaeton', 'latin'] },
-        { t: 'Dákiti', a: 'Bad Bunny', g: ['reggaeton'] },
-        { t: 'Despacito', a: 'Luis Fonsi', g: ['latin', 'pop'] },
-        { t: 'Numb', a: 'Linkin Park', g: ['rock', 'metal'] },
-        { t: 'Master of Puppets', a: 'Metallica', g: ['metal'] },
-        { t: 'Lose Yourself', a: 'Eminem', g: ['hip-hop'] },
-        { t: 'SICKO MODE', a: 'Travis Scott', g: ['hip-hop'] },
-        { t: 'Dynamite', a: 'BTS', g: ['k-pop', 'pop'] },
-        { t: 'As It Was', a: 'Harry Styles', g: ['pop', 'indie'] },
-        { t: 'Cruel Summer', a: 'Taylor Swift', g: ['pop'] },
-        { t: 'Billie Jean', a: 'Michael Jackson', g: ['pop'] },
-        { t: 'Vampire', a: 'Olivia Rodrigo', g: ['pop', 'rock'] }
-      ];
-      
-      const shuffled = [...catalog].sort(() => 0.5 - Math.random());
-      const mockSongs = shuffled.slice(0, 8).map((s) => ({
-        title: s.t,
-        artist: s.a,
-        album: 'Grandes Éxitos',
-        genres: [...new Set([...s.g, ...fallbackGenres])],
-        score: Math.floor(Math.random() * 20) + 80,
-        whyRecommend: `Seleccionada por nuestro algoritmo para potenciar tu estado ${answers.mood} y complementar la textura de los bajos y agudos.`
-      }));
-
-      recommendationData = {
-        description: `Hemos analizado tu preferencia por sonidos con estado ${answers.mood} y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.`,
-        dominantGenres: fallbackGenres,
-        vibes: [answers.mood, 'Curado', 'Local'],
-        attributes: {
-          valence: baseValence,
-          energy: baseEnergy,
-          tempo: answers.rhythmSpeed * 30 + 40,
-          acousticness: answers.stylePreference === 'acustico' ? 80 : 30,
-          instrumentalness: answers.vocalPreference === 'instrumental' ? 90 : 20,
-          danceability: answers.mood === 'energetico' ? 85 : 40
-        },
-        songs: mockSongs
-      };
-    }
-
-    // Enhance song recomendations with custom cover arts and URLs
-    const enhancedSongs = recommendationData.songs.map((song: any, index: number) => {
-      const songId = `song-${crypto.randomBytes(4).toString('hex')}`;
-      const searchTerms = `${song.title} ${song.artist}`;
-      return {
-        ...song,
-        id: songId,
-        coverUrl: getRandomCover(song.genres || recommendationData.dominantGenres),
-        spotifyUrl: `https://open.spotify.com/search/${encodeURIComponent(searchTerms)}`,
-        attributes: {
-          valence: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.valence + (Math.random() * 20 - 10)))),
-          energy: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.energy + (Math.random() * 20 - 10)))),
-          tempo: Math.max(50, Math.min(180, Math.floor(recommendationData.attributes.tempo + (Math.random() * 30 - 15)))),
-          acousticness: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.acousticness + (Math.random() * 20 - 10)))),
-          instrumentalness: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.instrumentalness + (Math.random() * 20 - 10)))),
-          danceability: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.danceability + (Math.random() * 20 - 10)))),
+                      valence: {
+                        type: Type.INTEGER,
+                        description:
+                          "Grado de felicidad/positividad musical de 0 a 100.",
+                      },
+                      energy: {
+                        type: Type.INTEGER,
+                        description:
+                          "Intensidad o energía del sonido de 0 a 100.",
+                      },
+                      tempo: {
+                        type: Type.INTEGER,
+                        description:
+                          "BPM estimado de las canciones ideales (ej. 60-180).",
+                      },
+                      acousticness: {
+                        type: Type.INTEGER,
+                        description:
+                          "Porcentaje de preferencia acústica de 0 a 100.",
+                      },
+                      instrumentalness: {
+                        type: Type.INTEGER,
+                        description:
+                          "Porcentaje de enfoque instrumental de 0 a 100.",
+                      },
+                      danceability: {
+                        type: Type.INTEGER,
+                        description:
+                          "Ritmicidad o capacidad bailable de 0 a 100.",
+                      },
+                    },
+                  },
+                  songs: {
+                    type: Type.ARRAY,
+                    items: {
+                      type: Type.OBJECT,
+                      required: [
+                        "title",
+                        "artist",
+                        "album",
+                        "genres",
+                        "score",
+                        "whyRecommend",
+                      ],
+                      properties: {
+                        title: {
+                          type: Type.STRING,
+                          description:
+                            'Nombre de la canción real (ej. "Intro").',
+                        },
+                        artist: {
+                          type: Type.STRING,
+                          description:
+                            'Nombre del artista/banda real (ej. "The xx").',
+                        },
+                        album: {
+                          type: Type.STRING,
+                          description: "Nombre del álbum real de esa canción.",
+                        },
+                        genres: {
+                          type: Type.ARRAY,
+                          items: { type: Type.STRING },
+                          description: "Géneros de esta canción.",
+                        },
+                        score: {
+                          type: Type.INTEGER,
+                          description:
+                            "Afinidad aproximada con el perfil de 0 a 100.",
+                        },
+                        whyRecommend: {
+                          type: Type.STRING,
+                          description:
+                            "Explicación de una oración en español sobre por qué encaja perfectamente en este contexto.",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          });
+          recommendationData = JSON.parse(response.text || "{}");
+        } catch (err) {
+          console.error(
+            "Gemini API call failed, falling back to local engine:",
+            err,
+          );
         }
+      }
+
+      if (!recommendationData || !recommendationData.songs) {
+        console.log("Using Local Fallback Recommendation Engine...");
+        const fallbackGenres =
+          answers.genres.length > 0 ? answers.genres : ["Pop", "Indie"];
+        const baseValence =
+          answers.mood === "alegre"
+            ? 85
+            : answers.mood === "melancolico"
+              ? 30
+              : answers.mood === "energetico"
+                ? 80
+                : 60;
+        const baseEnergy =
+          answers.mood === "energetico"
+            ? 90
+            : answers.mood === "relajado"
+              ? 30
+              : 65;
+
+        const catalog = [
+          { t: "Blinding Lights", a: "The Weeknd", g: ["pop", "electronic"] },
+          { t: "Bohemian Rhapsody", a: "Queen", g: ["rock", "classic"] },
+          { t: "Take Five", a: "Dave Brubeck", g: ["jazz"] },
+          { t: "Clair de Lune", a: "Claude Debussy", g: ["classical"] },
+          { t: "Strobe", a: "deadmau5", g: ["electronic"] },
+          { t: "Midnight City", a: "M83", g: ["electronic", "indie"] },
+          { t: "Smells Like Teen Spirit", a: "Nirvana", g: ["rock"] },
+          { t: "Levitating", a: "Dua Lipa", g: ["pop"] },
+          { t: "So What", a: "Miles Davis", g: ["jazz"] },
+          { t: "Weightless", a: "Marconi Union", g: ["ambient"] },
+          { t: "Shape of You", a: "Ed Sheeran", g: ["pop"] },
+          { t: "Hotel California", a: "Eagles", g: ["rock"] },
+          { t: "Tusa", a: "Karol G", g: ["reggaeton", "latin"] },
+          { t: "Dákiti", a: "Bad Bunny", g: ["reggaeton"] },
+          { t: "Despacito", a: "Luis Fonsi", g: ["latin", "pop"] },
+          { t: "Numb", a: "Linkin Park", g: ["rock", "metal"] },
+          { t: "Master of Puppets", a: "Metallica", g: ["metal"] },
+          { t: "Lose Yourself", a: "Eminem", g: ["hip-hop"] },
+          { t: "SICKO MODE", a: "Travis Scott", g: ["hip-hop"] },
+          { t: "Dynamite", a: "BTS", g: ["k-pop", "pop"] },
+          { t: "As It Was", a: "Harry Styles", g: ["pop", "indie"] },
+          { t: "Cruel Summer", a: "Taylor Swift", g: ["pop"] },
+          { t: "Billie Jean", a: "Michael Jackson", g: ["pop"] },
+          { t: "Vampire", a: "Olivia Rodrigo", g: ["pop", "rock"] },
+        ];
+
+        const shuffled = [...catalog].sort(() => 0.5 - Math.random());
+        const mockSongs = shuffled.slice(0, 8).map((s) => ({
+          title: s.t,
+          artist: s.a,
+          album: "Grandes Éxitos",
+          genres: [...new Set([...s.g, ...fallbackGenres])],
+          score: Math.floor(Math.random() * 20) + 80,
+          whyRecommend: `Seleccionada por nuestro algoritmo para potenciar tu estado ${answers.mood} y complementar la textura de los bajos y agudos.`,
+        }));
+
+        recommendationData = {
+          description: `Hemos analizado tu preferencia por sonidos con estado ${answers.mood} y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.`,
+          dominantGenres: fallbackGenres,
+          vibes: [answers.mood, "Curado", "Local"],
+          attributes: {
+            valence: baseValence,
+            energy: baseEnergy,
+            tempo: answers.rhythmSpeed * 30 + 40,
+            acousticness: answers.stylePreference === "acustico" ? 80 : 30,
+            instrumentalness:
+              answers.vocalPreference === "instrumental" ? 90 : 20,
+            danceability: answers.mood === "energetico" ? 85 : 40,
+          },
+          songs: mockSongs,
+        };
+      }
+
+      // Enhance song recomendations with custom cover arts and URLs
+      const enhancedSongs = recommendationData.songs.map(
+        (song: any, index: number) => {
+          const songId = `song-${crypto.randomBytes(4).toString("hex")}`;
+          const searchTerms = `${song.title} ${song.artist}`;
+          return {
+            ...song,
+            id: songId,
+            coverUrl: getRandomCover(
+              song.genres || recommendationData.dominantGenres,
+            ),
+            spotifyUrl: `https://open.spotify.com/search/${encodeURIComponent(searchTerms)}`,
+            attributes: {
+              valence: Math.max(
+                0,
+                Math.min(
+                  100,
+                  Math.floor(
+                    recommendationData.attributes.valence +
+                      (Math.random() * 20 - 10),
+                  ),
+                ),
+              ),
+              energy: Math.max(
+                0,
+                Math.min(
+                  100,
+                  Math.floor(
+                    recommendationData.attributes.energy +
+                      (Math.random() * 20 - 10),
+                  ),
+                ),
+              ),
+              tempo: Math.max(
+                50,
+                Math.min(
+                  180,
+                  Math.floor(
+                    recommendationData.attributes.tempo +
+                      (Math.random() * 30 - 15),
+                  ),
+                ),
+              ),
+              acousticness: Math.max(
+                0,
+                Math.min(
+                  100,
+                  Math.floor(
+                    recommendationData.attributes.acousticness +
+                      (Math.random() * 20 - 10),
+                  ),
+                ),
+              ),
+              instrumentalness: Math.max(
+                0,
+                Math.min(
+                  100,
+                  Math.floor(
+                    recommendationData.attributes.instrumentalness +
+                      (Math.random() * 20 - 10),
+                  ),
+                ),
+              ),
+              danceability: Math.max(
+                0,
+                Math.min(
+                  100,
+                  Math.floor(
+                    recommendationData.attributes.danceability +
+                      (Math.random() * 20 - 10),
+                  ),
+                ),
+              ),
+            },
+          };
+        },
+      );
+
+      const finalProfile = {
+        description: recommendationData.description,
+        dominantGenres: recommendationData.dominantGenres,
+        vibes: recommendationData.vibes,
+        attributes: recommendationData.attributes,
+        createdAt: new Date().toISOString(),
       };
-    });
 
-    const finalProfile = {
-      description: recommendationData.description,
-      dominantGenres: recommendationData.dominantGenres,
-      vibes: recommendationData.vibes,
-      attributes: recommendationData.attributes,
-      createdAt: new Date().toISOString()
-    };
+      // Los visitantes pueden generar una recomendación,
+      // pero solamente los usuarios autenticados guardan historial.
+      if (!req.authUser) {
+        return res.json({
+          id: `temporary-${crypto.randomBytes(6).toString("hex")}`,
+          createdAt: new Date().toISOString(),
+          answers,
+          profile: finalProfile,
+          recommendations: enhancedSongs,
+          likes: {},
+        });
+      }
 
-    const historyItem = {
-      id: `session-${crypto.randomBytes(6).toString('hex')}`,
-      userId: req.user ? req.user.id : 'guest',
-      createdAt: new Date().toISOString(),
-      answers,
-      profile: finalProfile,
-      recommendations: enhancedSongs,
-      likes: {}
-    };
+      const sessionId = await createMusicSession(req.authUser.id, {
+        answers,
+        profile: finalProfile,
+        recommendations: enhancedSongs,
+      });
 
-    const db = readDb();
-    db.history.push(historyItem);
-    writeDb(db);
+      const { data: savedSession, error: savedSessionError } =
+        await findHistoryItem(req.authUser.id, sessionId);
 
-    res.json(historyItem);
-  } catch (error) {
-    console.error('Error generating recommendations:', error);
-    res.status(500).json({ error: 'Hubo un error al procesar tu perfil musical. Por favor, intenta de nuevo.' });
-  }
-});
+      if (savedSessionError || !savedSession) {
+        console.error("Saved session retrieval error:", savedSessionError);
 
-// 6. Like/Dislike Recommendation Feedback
-app.post('/api/recommendations/like', authenticate, (req: any, res) => {
-  const { sessionId, songId, isLiked } = req.body;
-  if (!sessionId || !songId || isLiked === undefined) {
-    return res.status(400).json({ error: 'Argumentos faltantes' });
-  }
+        return res.status(201).json({
+          id: sessionId,
+          createdAt: new Date().toISOString(),
+          answers,
+          profile: finalProfile,
+          recommendations: enhancedSongs,
+          likes: {},
+        });
+      }
 
-  const db = readDb();
-  const index = db.history.findIndex((h: any) => h.id === sessionId);
-  if (index === -1) {
-    return res.status(404).json({ error: 'Sesión no encontrada' });
-  }
+      return res.json(mapHistoryItem(savedSession, req.authUser.id));
+    } catch (error) {
+      console.error("Error generating recommendations:", error);
+      res
+        .status(500)
+        .json({
+          error:
+            "Hubo un error al procesar tu perfil musical. Por favor, intenta de nuevo.",
+        });
+    }
+  },
+);
 
-  // Ensure authorized OR guest
-  const userId = req.user ? req.user.id : 'guest';
-  if (db.history[index].userId !== userId) {
-    return res.status(403).json({ error: 'Acceso no permitido' });
-  }
-
-  if (!db.history[index].likes) {
-    db.history[index].likes = {};
-  }
-
-  db.history[index].likes[songId] = isLiked;
-  writeDb(db);
-
-  res.json({ success: true, likes: db.history[index].likes });
-});
-
-
-// Set up Vite and Static File Serving
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true
+      },
       appType: 'spa'
     });
+
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = path.join(
+      process.cwd(),
+      'dist'
+    );
+
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+
+    app.get('*', (_req, res) => {
+      res.sendFile(
+        path.join(distPath, 'index.html')
+      );
     });
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`SoundMind App running on port ${PORT}`);
+    console.log(
+      `SoundMind App running on port ${PORT}`
+    );
   });
 }
 
-startServer();
+startServer().catch((error) => {
+  console.error(
+    'No se pudo iniciar SoundMind:',
+    error
+  );
+
+  process.exit(1);
+});
