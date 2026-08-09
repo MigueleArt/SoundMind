@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { QuestionnaireAnswers, RecommendationHistoryItem } from './types';
+import { getCodeFromUrl } from './services/spotify';
 
 // Importing custom sub-components
 import AuthModal from './components/AuthModal';
@@ -30,6 +31,7 @@ const LOADING_STEPS = [
 export default function App() {
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string } | null>(null);
   const [authToken, setAuthToken] = useState<string | null>(null);
+  const [spotifyToken, setSpotifyToken] = useState<string | null>(null);
   const [history, setHistory] = useState<RecommendationHistoryItem[]>([]);
   const [selectedSession, setSelectedSession] = useState<RecommendationHistoryItem | null>(null);
   const [currentPage, setCurrentPage] = useState<'home' | 'questionnaire' | 'results' | 'profile'>('home');
@@ -42,13 +44,62 @@ export default function App() {
   useEffect(() => {
     const savedToken = localStorage.getItem('soundmind_token');
     const savedUser = localStorage.getItem('soundmind_user');
+    const savedSpotifyToken = localStorage.getItem('soundmind_spotify_token');
+    const savedSession = localStorage.getItem('soundmind_selected_session');
+
+    const code = getCodeFromUrl();
+    if (code) {
+      (async () => {
+        const codeVerifier = localStorage.getItem('soundmind_spotify_code_verifier');
+        try {
+          const res = await fetch('/api/spotify/token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code, codeVerifier })
+          });
+          const data = await res.json();
+          if (res.ok && data.access_token) {
+            setSpotifyToken(data.access_token);
+            localStorage.setItem('soundmind_spotify_token', data.access_token);
+            if (data.refresh_token) localStorage.setItem('soundmind_spotify_refresh_token', data.refresh_token);
+          } else {
+            console.error('Spotify token exchange failed', data);
+          }
+        } catch (err) {
+          console.error('Error exchanging spotify code', err);
+        } finally {
+          try { localStorage.removeItem('soundmind_spotify_code_verifier'); } catch(e){}
+        }
+      })();
+    } else if (savedSpotifyToken) {
+      setSpotifyToken(savedSpotifyToken);
+    }
+
     if (savedToken && savedUser) {
       const parsedUser = JSON.parse(savedUser);
       setAuthToken(savedToken);
       setCurrentUser(parsedUser);
       fetchHistory(savedToken);
     }
+
+    if (savedSession) {
+      try {
+        const parsedSession = JSON.parse(savedSession) as RecommendationHistoryItem;
+        setSelectedSession(parsedSession);
+        setCurrentPage('results');
+      } catch (err) {
+        localStorage.removeItem('soundmind_selected_session');
+      }
+    }
   }, []);
+
+  useEffect(() => {
+    if (selectedSession) {
+      localStorage.setItem('soundmind_selected_session', JSON.stringify(selectedSession));
+    } else {
+      localStorage.removeItem('soundmind_selected_session');
+    }
+  }, [selectedSession]);
 
   // 2. Poll loading steps during recommendation generation to improve user experience
   useEffect(() => {
@@ -92,7 +143,10 @@ export default function App() {
   function handleLogout() {
     localStorage.removeItem('soundmind_token');
     localStorage.removeItem('soundmind_user');
+    localStorage.removeItem('soundmind_spotify_token');
+    localStorage.removeItem('soundmind_selected_session');
     setAuthToken(null);
+    setSpotifyToken(null);
     setCurrentUser(null);
     setHistory([]);
     setSelectedSession(null);
@@ -121,17 +175,20 @@ export default function App() {
         throw new Error(data.error || 'Algo salió mal al obtener recomendaciones.');
       }
 
-      // Add to session lists
+      // Guardamos la sesión generada y cambiamos la pantalla de forma segura
       setSelectedSession(data);
       setLikedState({});
       if (currentUser) {
         setHistory(prev => [...prev, data]);
       }
       
+      // Forzamos el cambio a la vista de resultados antes de apagar el loading
       setCurrentPage('results');
-    } catch (error) {
-      console.error(error);
-      alert('Hubo un problema al contactar el motor de recomendación. Por favor, intenta de nuevo.');
+    } catch (error: any) {
+      console.error('Error al generar recomendaciones:', error);
+      alert(error?.message || 'Hubo un problema al generar las recomendaciones. Por favor, intenta de nuevo.');
+      // Evitamos que vuelva a 'home', se queda en 'questionnaire'
+      setCurrentPage('questionnaire');
     } finally {
       setLoading(false);
     }
@@ -197,6 +254,7 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-black/20 border-b border-white/10 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <button 
+            type="button"
             onClick={() => setCurrentPage('home')}
             className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-white cursor-pointer group"
           >
@@ -213,6 +271,7 @@ export default function App() {
           {/* Nav Links */}
           <nav className="flex items-center gap-1 md:gap-3">
             <button
+              type="button"
               onClick={() => setCurrentPage('home')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg tracking-wider cursor-pointer transition-colors ${
                 currentPage === 'home' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
@@ -221,6 +280,7 @@ export default function App() {
               Inicio
             </button>
             <button
+              type="button"
               onClick={() => {
                 setSelectedSession(null);
                 setCurrentPage('questionnaire');
@@ -233,6 +293,7 @@ export default function App() {
             </button>
             {currentUser && (
               <button
+                type="button"
                 onClick={() => setCurrentPage('profile')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg tracking-wider cursor-pointer transition-colors ${
                   currentPage === 'profile' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
@@ -251,6 +312,7 @@ export default function App() {
                   @{currentUser.username}
                 </span>
                 <button
+                  type="button"
                   onClick={handleLogout}
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 hover:border-red-500/30 hover:bg-red-500/5 hover:text-red-400 text-xs font-semibold rounded-lg cursor-pointer transition-all"
                   title="Cerrar sesión"
@@ -261,6 +323,7 @@ export default function App() {
               </div>
             ) : (
               <button
+                type="button"
                 onClick={() => setIsAuthOpen(true)}
                 className="flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-xl text-white text-xs font-semibold cursor-pointer shadow-lg active:scale-95 transition-all shadow-cyan-500/10"
               >
@@ -333,6 +396,7 @@ export default function App() {
 
                     <div className="flex flex-wrap gap-4 pt-2">
                       <button
+                        type="button"
                         onClick={() => {
                           setSelectedSession(null);
                           setCurrentPage('questionnaire');
@@ -343,6 +407,7 @@ export default function App() {
                         <ArrowRight size={14} />
                       </button>
                       <button
+                        type="button"
                         onClick={() => {
                           if (currentUser) {
                             setCurrentPage('profile');
@@ -459,6 +524,7 @@ export default function App() {
                   session={selectedSession}
                   onLikeChange={handleLikeChange}
                   likedState={likedState}
+                  spotifyToken={spotifyToken}
                   onReset={() => {
                     setSelectedSession(null);
                     setCurrentPage('questionnaire');

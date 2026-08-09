@@ -6,6 +6,20 @@
       "hash": "6af69631dd28310fddcd5057fa6a382bf9bbdc7bdb31f78d2450fd1829bde321611bae48ad045f5c3f35779fd7f110df23e997eb27bce156e9aad76b8c92b073",
       "salt": "a90df180612d9afa224f7919b9b12528",
       "createdAt": "2026-07-03T20:38:58.268Z"
+    },
+    {
+      "id": "342d45607fc048ac",
+      "username": "mane",
+      "hash": "3179c029828c8cac51e689164dd128a562a59988c672378f5d0104b87b00489e64d29c5b03138d78e519d89351c5c25f5f311bbe0571a21189830348d28ef431",
+      "salt": "ba9355f88e20a4e61a34094d96832147",
+      "createdAt": "2026-08-09T20:39:17.499Z"
+    },
+    {
+      "id": "fc5e9406b9058673",
+      "username": "manelic",
+      "hash": "804dd020195998cfb8495954ea85da3a0e1ab5beccdf94130afa4d5fab6f881051a4a81bcde117b4cb442d978cb69c022488435e79d5d08c959ff89abd6da9d4",
+      "salt": "67d5a4b50c8fce6dca07d25aa9d57484",
+      "createdAt": "2026-08-09T22:38:03.610Z"
     }
   ],
   "history": [
@@ -1188,6 +1202,3768 @@
             "acousticness": 51,
             "instrumentalness": 47,
             "danceability": 55
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-482d4f513ca2",
+      "userId": "guest",
+      "createdAt": "2026-08-09T20:37:37.478Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "jazz",
+          "pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "jazz",
+          "pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T20:37:37.476Z"
+      },
+      "recommendations": [
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "jazz",
+            "pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-f4d01a10",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 86,
+            "energy": 63,
+            "tempo": 135,
+            "acousticness": 30,
+            "instrumentalness": 20,
+            "danceability": 35
+          }
+        },
+        {
+          "title": "Smells Like Teen Spirit",
+          "artist": "Nirvana",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "jazz",
+            "pop"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e274068b",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 84,
+            "energy": 55,
+            "tempo": 130,
+            "acousticness": 28,
+            "instrumentalness": 19,
+            "danceability": 48
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "jazz"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-7fdba084",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 75,
+            "energy": 66,
+            "tempo": 124,
+            "acousticness": 39,
+            "instrumentalness": 27,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "jazz",
+            "pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c9eb65ab",
+          "coverUrl": "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 85,
+            "energy": 63,
+            "tempo": 130,
+            "acousticness": 27,
+            "instrumentalness": 18,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "jazz",
+            "pop"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-dbc73073",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 92,
+            "energy": 67,
+            "tempo": 132,
+            "acousticness": 36,
+            "instrumentalness": 12,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "jazz",
+            "pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-5acff56b",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 78,
+            "energy": 62,
+            "tempo": 143,
+            "acousticness": 35,
+            "instrumentalness": 18,
+            "danceability": 49
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "jazz",
+            "pop"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-42760ecf",
+          "coverUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 80,
+            "energy": 73,
+            "tempo": 142,
+            "acousticness": 20,
+            "instrumentalness": 26,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "indie",
+            "jazz"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-681ca47e",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/As%20It%20Was%20Harry%20Styles",
+          "attributes": {
+            "valence": 80,
+            "energy": 60,
+            "tempo": 135,
+            "acousticness": 38,
+            "instrumentalness": 21,
+            "danceability": 31
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-7a8f17032e2a",
+      "userId": "342d45607fc048ac",
+      "createdAt": "2026-08-09T20:42:08.468Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "jazz",
+          "pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "jazz",
+          "pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T20:42:08.465Z"
+      },
+      "recommendations": [
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "jazz",
+            "pop"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-dd21a4ad",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 79,
+            "energy": 58,
+            "tempo": 122,
+            "acousticness": 24,
+            "instrumentalness": 29,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Smells Like Teen Spirit",
+          "artist": "Nirvana",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "jazz",
+            "pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-d0b631be",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 83,
+            "energy": 66,
+            "tempo": 140,
+            "acousticness": 33,
+            "instrumentalness": 18,
+            "danceability": 30
+          }
+        },
+        {
+          "title": "Master of Puppets",
+          "artist": "Metallica",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "metal",
+            "jazz",
+            "pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-a3f69650",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 77,
+            "energy": 69,
+            "tempo": 128,
+            "acousticness": 34,
+            "instrumentalness": 11,
+            "danceability": 30
+          }
+        },
+        {
+          "title": "Cruel Summer",
+          "artist": "Taylor Swift",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "jazz"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-dbf1c2f7",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cruel%20Summer%20Taylor%20Swift",
+          "attributes": {
+            "valence": 76,
+            "energy": 73,
+            "tempo": 133,
+            "acousticness": 35,
+            "instrumentalness": 14,
+            "danceability": 35
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "jazz"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-475b91e3",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 79,
+            "energy": 70,
+            "tempo": 121,
+            "acousticness": 32,
+            "instrumentalness": 10,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "jazz"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-3124318e",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 82,
+            "energy": 66,
+            "tempo": 141,
+            "acousticness": 27,
+            "instrumentalness": 23,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "jazz"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6b879d28",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 83,
+            "energy": 72,
+            "tempo": 118,
+            "acousticness": 34,
+            "instrumentalness": 22,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "jazz",
+            "pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-76a68fad",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 75,
+            "energy": 62,
+            "tempo": 117,
+            "acousticness": 25,
+            "instrumentalness": 17,
+            "danceability": 40
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-1fdde0886459",
+      "userId": "342d45607fc048ac",
+      "createdAt": "2026-08-09T20:49:45.301Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "pop",
+          "jazz"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "pop",
+          "jazz"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T20:49:45.301Z"
+      },
+      "recommendations": [
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "pop",
+            "jazz"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-42bb69f8",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 87,
+            "energy": 73,
+            "tempo": 140,
+            "acousticness": 30,
+            "instrumentalness": 27,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "jazz"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-947821f4",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 92,
+            "energy": 57,
+            "tempo": 142,
+            "acousticness": 27,
+            "instrumentalness": 21,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop",
+            "jazz"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-35b39e04",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 92,
+            "energy": 55,
+            "tempo": 115,
+            "acousticness": 22,
+            "instrumentalness": 25,
+            "danceability": 34
+          }
+        },
+        {
+          "title": "Despacito",
+          "artist": "Luis Fonsi",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "latin",
+            "pop",
+            "jazz"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-a068c82e",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Despacito%20Luis%20Fonsi",
+          "attributes": {
+            "valence": 75,
+            "energy": 57,
+            "tempo": 139,
+            "acousticness": 37,
+            "instrumentalness": 16,
+            "danceability": 49
+          }
+        },
+        {
+          "title": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "classic",
+            "pop",
+            "jazz"
+          ],
+          "score": 92,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-a5c6e469",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 87,
+            "energy": 70,
+            "tempo": 142,
+            "acousticness": 35,
+            "instrumentalness": 15,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "pop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e13785cb",
+          "coverUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 89,
+            "energy": 60,
+            "tempo": 129,
+            "acousticness": 26,
+            "instrumentalness": 14,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "So What",
+          "artist": "Miles Davis",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0bebc765",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/So%20What%20Miles%20Davis",
+          "attributes": {
+            "valence": 89,
+            "energy": 59,
+            "tempo": 120,
+            "acousticness": 35,
+            "instrumentalness": 28,
+            "danceability": 46
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "pop",
+            "jazz"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-906a8da1",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 90,
+            "energy": 64,
+            "tempo": 132,
+            "acousticness": 26,
+            "instrumentalness": 25,
+            "danceability": 38
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-740e2adb8aee",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:17:27.454Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "pop",
+          "jazz"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "pop",
+          "jazz"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:17:27.454Z"
+      },
+      "recommendations": [
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "pop",
+            "jazz"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-4da56521",
+          "coverUrl": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 94,
+            "energy": 71,
+            "tempo": 140,
+            "acousticness": 30,
+            "instrumentalness": 13,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop",
+            "jazz"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-754af021",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 82,
+            "energy": 59,
+            "tempo": 120,
+            "acousticness": 22,
+            "instrumentalness": 18,
+            "danceability": 45
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "jazz"
+          ],
+          "score": 92,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-2375ea16",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 76,
+            "energy": 65,
+            "tempo": 140,
+            "acousticness": 26,
+            "instrumentalness": 17,
+            "danceability": 34
+          }
+        },
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ce4411d6",
+          "coverUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 82,
+            "energy": 66,
+            "tempo": 126,
+            "acousticness": 31,
+            "instrumentalness": 11,
+            "danceability": 35
+          }
+        },
+        {
+          "title": "So What",
+          "artist": "Miles Davis",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-cee1f1bc",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/So%20What%20Miles%20Davis",
+          "attributes": {
+            "valence": 79,
+            "energy": 69,
+            "tempo": 135,
+            "acousticness": 37,
+            "instrumentalness": 23,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "jazz"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-944c9683",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 94,
+            "energy": 73,
+            "tempo": 119,
+            "acousticness": 38,
+            "instrumentalness": 20,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "pop",
+            "jazz"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-a7eb75fe",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 79,
+            "energy": 70,
+            "tempo": 129,
+            "acousticness": 32,
+            "instrumentalness": 19,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Tusa",
+          "artist": "Karol G",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "latin",
+            "pop",
+            "jazz"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-11baeddc",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 92,
+            "energy": 67,
+            "tempo": 139,
+            "acousticness": 30,
+            "instrumentalness": 13,
+            "danceability": 35
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-51c1355dd1d2",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:17:46.786Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "hip-hop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "hip-hop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:17:46.786Z"
+      },
+      "recommendations": [
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "hip-hop"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-540d7b17",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 92,
+            "energy": 63,
+            "tempo": 141,
+            "acousticness": 38,
+            "instrumentalness": 10,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "hip-hop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-497fb576",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 84,
+            "energy": 69,
+            "tempo": 139,
+            "acousticness": 31,
+            "instrumentalness": 24,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Billie Jean",
+          "artist": "Michael Jackson",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "hip-hop"
+          ],
+          "score": 87,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-291e7a8e",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Billie%20Jean%20Michael%20Jackson",
+          "attributes": {
+            "valence": 83,
+            "energy": 70,
+            "tempo": 140,
+            "acousticness": 20,
+            "instrumentalness": 12,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Strobe",
+          "artist": "deadmau5",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "hip-hop"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-a3a00d0b",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Strobe%20deadmau5",
+          "attributes": {
+            "valence": 76,
+            "energy": 69,
+            "tempo": 140,
+            "acousticness": 28,
+            "instrumentalness": 27,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "hip-hop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e3c9f40b",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 75,
+            "energy": 58,
+            "tempo": 134,
+            "acousticness": 28,
+            "instrumentalness": 23,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "hip-hop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-24d1dbba",
+          "coverUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 86,
+            "energy": 66,
+            "tempo": 126,
+            "acousticness": 37,
+            "instrumentalness": 14,
+            "danceability": 30
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop",
+            "hip-hop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-333b9e56",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 94,
+            "energy": 55,
+            "tempo": 125,
+            "acousticness": 28,
+            "instrumentalness": 28,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6206b343",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 84,
+            "energy": 68,
+            "tempo": 124,
+            "acousticness": 22,
+            "instrumentalness": 27,
+            "danceability": 44
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-6d2d6d4bbe6b",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:18:18.699Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:18:18.699Z"
+      },
+      "recommendations": [
+        {
+          "title": "Weightless",
+          "artist": "Marconi Union",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "ambient",
+            "k-pop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6a2fc279",
+          "coverUrl": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Weightless%20Marconi%20Union",
+          "attributes": {
+            "valence": 86,
+            "energy": 68,
+            "tempo": 138,
+            "acousticness": 27,
+            "instrumentalness": 14,
+            "danceability": 48
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-2535bae9",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 83,
+            "energy": 70,
+            "tempo": 144,
+            "acousticness": 24,
+            "instrumentalness": 26,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "k-pop"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-b4ab459f",
+          "coverUrl": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 87,
+            "energy": 66,
+            "tempo": 137,
+            "acousticness": 36,
+            "instrumentalness": 16,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 98,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-d6c9f6b4",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 80,
+            "energy": 73,
+            "tempo": 138,
+            "acousticness": 21,
+            "instrumentalness": 13,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Billie Jean",
+          "artist": "Michael Jackson",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-07405811",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Billie%20Jean%20Michael%20Jackson",
+          "attributes": {
+            "valence": 84,
+            "energy": 65,
+            "tempo": 128,
+            "acousticness": 31,
+            "instrumentalness": 29,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ed957b12",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 80,
+            "energy": 69,
+            "tempo": 118,
+            "acousticness": 29,
+            "instrumentalness": 19,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "k-pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-b54b52ae",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 83,
+            "energy": 65,
+            "tempo": 143,
+            "acousticness": 23,
+            "instrumentalness": 28,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c804f153",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 91,
+            "energy": 67,
+            "tempo": 132,
+            "acousticness": 22,
+            "instrumentalness": 13,
+            "danceability": 36
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-337e2eebc9b7",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:24:22.302Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "ambient"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "ambient"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:24:22.302Z"
+      },
+      "recommendations": [
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "ambient"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-57d5f1a7",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 83,
+            "energy": 56,
+            "tempo": 141,
+            "acousticness": 20,
+            "instrumentalness": 10,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Smells Like Teen Spirit",
+          "artist": "Nirvana",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "ambient"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-5cfb52f6",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 91,
+            "energy": 73,
+            "tempo": 142,
+            "acousticness": 24,
+            "instrumentalness": 22,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Despacito",
+          "artist": "Luis Fonsi",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "latin",
+            "pop",
+            "ambient"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-b91074b5",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Despacito%20Luis%20Fonsi",
+          "attributes": {
+            "valence": 90,
+            "energy": 68,
+            "tempo": 130,
+            "acousticness": 23,
+            "instrumentalness": 14,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "ambient"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-1cc69d8b",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 85,
+            "energy": 71,
+            "tempo": 125,
+            "acousticness": 30,
+            "instrumentalness": 24,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "ambient"
+          ],
+          "score": 87,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-acbc421b",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 89,
+            "energy": 68,
+            "tempo": 122,
+            "acousticness": 27,
+            "instrumentalness": 10,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "indie",
+            "ambient"
+          ],
+          "score": 98,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-7654f410",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/As%20It%20Was%20Harry%20Styles",
+          "attributes": {
+            "valence": 94,
+            "energy": 65,
+            "tempo": 118,
+            "acousticness": 31,
+            "instrumentalness": 24,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "ambient"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-8c31f43e",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 80,
+            "energy": 63,
+            "tempo": 119,
+            "acousticness": 24,
+            "instrumentalness": 13,
+            "danceability": 45
+          }
+        },
+        {
+          "title": "Master of Puppets",
+          "artist": "Metallica",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "metal",
+            "ambient"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-9ed81d91",
+          "coverUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 83,
+            "energy": 67,
+            "tempo": 120,
+            "acousticness": 31,
+            "instrumentalness": 19,
+            "danceability": 41
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-74fd20a7bfae",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:24:47.990Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:24:47.990Z"
+      },
+      "recommendations": [
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-b9134968",
+          "coverUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 94,
+            "energy": 72,
+            "tempo": 133,
+            "acousticness": 32,
+            "instrumentalness": 29,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "k-pop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-228071c0",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 91,
+            "energy": 57,
+            "tempo": 144,
+            "acousticness": 36,
+            "instrumentalness": 14,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Cruel Summer",
+          "artist": "Taylor Swift",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-64d7f0f9",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cruel%20Summer%20Taylor%20Swift",
+          "attributes": {
+            "valence": 90,
+            "energy": 64,
+            "tempo": 116,
+            "acousticness": 38,
+            "instrumentalness": 23,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Tusa",
+          "artist": "Karol G",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "latin",
+            "k-pop"
+          ],
+          "score": 95,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6ffc31ff",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 91,
+            "energy": 73,
+            "tempo": 123,
+            "acousticness": 32,
+            "instrumentalness": 11,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-040ebedd",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 92,
+            "energy": 60,
+            "tempo": 128,
+            "acousticness": 31,
+            "instrumentalness": 28,
+            "danceability": 35
+          }
+        },
+        {
+          "title": "Strobe",
+          "artist": "deadmau5",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "k-pop"
+          ],
+          "score": 95,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-d0b53aa5",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Strobe%20deadmau5",
+          "attributes": {
+            "valence": 94,
+            "energy": 59,
+            "tempo": 143,
+            "acousticness": 28,
+            "instrumentalness": 23,
+            "danceability": 37
+          }
+        },
+        {
+          "title": "Levitating",
+          "artist": "Dua Lipa",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-fcada930",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Levitating%20Dua%20Lipa",
+          "attributes": {
+            "valence": 88,
+            "energy": 63,
+            "tempo": 143,
+            "acousticness": 33,
+            "instrumentalness": 20,
+            "danceability": 30
+          }
+        },
+        {
+          "title": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "classic",
+            "k-pop"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-7b8e82ac",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 84,
+            "energy": 57,
+            "tempo": 127,
+            "acousticness": 34,
+            "instrumentalness": 18,
+            "danceability": 31
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-e95a4ae8c0ec",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:32:16.511Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:32:16.511Z"
+      },
+      "recommendations": [
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-1c43a811",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 86,
+            "energy": 71,
+            "tempo": 129,
+            "acousticness": 35,
+            "instrumentalness": 24,
+            "danceability": 30
+          }
+        },
+        {
+          "title": "So What",
+          "artist": "Miles Davis",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-38d4b16c",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/So%20What%20Miles%20Davis",
+          "attributes": {
+            "valence": 80,
+            "energy": 66,
+            "tempo": 141,
+            "acousticness": 31,
+            "instrumentalness": 14,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Billie Jean",
+          "artist": "Michael Jackson",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-741556a0",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Billie%20Jean%20Michael%20Jackson",
+          "attributes": {
+            "valence": 84,
+            "energy": 67,
+            "tempo": 127,
+            "acousticness": 31,
+            "instrumentalness": 18,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "k-pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-82d84864",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 77,
+            "energy": 62,
+            "tempo": 135,
+            "acousticness": 29,
+            "instrumentalness": 14,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "k-pop"
+          ],
+          "score": 92,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c6babe24",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 93,
+            "energy": 71,
+            "tempo": 140,
+            "acousticness": 30,
+            "instrumentalness": 13,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Levitating",
+          "artist": "Dua Lipa",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ea01d6a1",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Levitating%20Dua%20Lipa",
+          "attributes": {
+            "valence": 78,
+            "energy": 69,
+            "tempo": 131,
+            "acousticness": 32,
+            "instrumentalness": 26,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "indie",
+            "k-pop"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-cc0101e2",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/As%20It%20Was%20Harry%20Styles",
+          "attributes": {
+            "valence": 80,
+            "energy": 74,
+            "tempo": 129,
+            "acousticness": 32,
+            "instrumentalness": 21,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Cruel Summer",
+          "artist": "Taylor Swift",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0f700db6",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cruel%20Summer%20Taylor%20Swift",
+          "attributes": {
+            "valence": 85,
+            "energy": 62,
+            "tempo": 132,
+            "acousticness": 21,
+            "instrumentalness": 14,
+            "danceability": 30
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-004a164a61ab",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:39:55.708Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:39:55.708Z"
+      },
+      "recommendations": [
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "k-pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ae91e10c",
+          "coverUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 84,
+            "energy": 61,
+            "tempo": 143,
+            "acousticness": 31,
+            "instrumentalness": 24,
+            "danceability": 34
+          }
+        },
+        {
+          "title": "Tusa",
+          "artist": "Karol G",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "latin",
+            "k-pop"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-215ab0ea",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 90,
+            "energy": 59,
+            "tempo": 117,
+            "acousticness": 36,
+            "instrumentalness": 25,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "classic",
+            "k-pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6a03aa89",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 88,
+            "energy": 74,
+            "tempo": 121,
+            "acousticness": 25,
+            "instrumentalness": 14,
+            "danceability": 48
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-8919f9b7",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 75,
+            "energy": 74,
+            "tempo": 122,
+            "acousticness": 28,
+            "instrumentalness": 19,
+            "danceability": 46
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-9f1a7135",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 77,
+            "energy": 63,
+            "tempo": 116,
+            "acousticness": 24,
+            "instrumentalness": 17,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "Billie Jean",
+          "artist": "Michael Jackson",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-f2a2852c",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Billie%20Jean%20Michael%20Jackson",
+          "attributes": {
+            "valence": 89,
+            "energy": 63,
+            "tempo": 120,
+            "acousticness": 31,
+            "instrumentalness": 17,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "Cruel Summer",
+          "artist": "Taylor Swift",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ed1c98cc",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cruel%20Summer%20Taylor%20Swift",
+          "attributes": {
+            "valence": 90,
+            "energy": 64,
+            "tempo": 132,
+            "acousticness": 32,
+            "instrumentalness": 12,
+            "danceability": 48
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "k-pop"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-de9f7363",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 91,
+            "energy": 68,
+            "tempo": 136,
+            "acousticness": 21,
+            "instrumentalness": 17,
+            "danceability": 33
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-c3e416de5b0d",
+      "userId": "guest",
+      "createdAt": "2026-08-09T21:40:26.415Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T21:40:26.415Z"
+      },
+      "recommendations": [
+        {
+          "title": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "classic",
+            "k-pop"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-7706b017",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 86,
+            "energy": 65,
+            "tempo": 131,
+            "acousticness": 30,
+            "instrumentalness": 17,
+            "danceability": 45
+          }
+        },
+        {
+          "title": "Take Five",
+          "artist": "Dave Brubeck",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-f4ca3674",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Take%20Five%20Dave%20Brubeck",
+          "attributes": {
+            "valence": 80,
+            "energy": 74,
+            "tempo": 141,
+            "acousticness": 26,
+            "instrumentalness": 24,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop"
+          ],
+          "score": 87,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-424ea049",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 77,
+            "energy": 72,
+            "tempo": 121,
+            "acousticness": 36,
+            "instrumentalness": 12,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Smells Like Teen Spirit",
+          "artist": "Nirvana",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-07289592",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 85,
+            "energy": 74,
+            "tempo": 135,
+            "acousticness": 20,
+            "instrumentalness": 27,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e0f94207",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 77,
+            "energy": 56,
+            "tempo": 140,
+            "acousticness": 39,
+            "instrumentalness": 26,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-5c14d44a",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 78,
+            "energy": 61,
+            "tempo": 117,
+            "acousticness": 21,
+            "instrumentalness": 16,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "Numb",
+          "artist": "Linkin Park",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "metal",
+            "k-pop"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-d8ca9828",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Numb%20Linkin%20Park",
+          "attributes": {
+            "valence": 80,
+            "energy": 74,
+            "tempo": 128,
+            "acousticness": 37,
+            "instrumentalness": 24,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "k-pop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-4302de84",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 87,
+            "energy": 66,
+            "tempo": 126,
+            "acousticness": 31,
+            "instrumentalness": 14,
+            "danceability": 37
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-41f8591159c9",
+      "userId": "guest",
+      "createdAt": "2026-08-09T22:11:24.127Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "hip-hop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "hip-hop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T22:11:24.127Z"
+      },
+      "recommendations": [
+        {
+          "title": "Smells Like Teen Spirit",
+          "artist": "Nirvana",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "hip-hop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-40d13764",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 89,
+            "energy": 64,
+            "tempo": 122,
+            "acousticness": 31,
+            "instrumentalness": 12,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "hip-hop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-056fcd22",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 85,
+            "energy": 71,
+            "tempo": 121,
+            "acousticness": 26,
+            "instrumentalness": 11,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Tusa",
+          "artist": "Karol G",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "latin",
+            "hip-hop"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6fc3bd05",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 84,
+            "energy": 55,
+            "tempo": 131,
+            "acousticness": 31,
+            "instrumentalness": 26,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "hip-hop"
+          ],
+          "score": 87,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-face7790",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 80,
+            "energy": 72,
+            "tempo": 124,
+            "acousticness": 39,
+            "instrumentalness": 18,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "indie",
+            "hip-hop"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ee791285",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/As%20It%20Was%20Harry%20Styles",
+          "attributes": {
+            "valence": 90,
+            "energy": 60,
+            "tempo": 116,
+            "acousticness": 26,
+            "instrumentalness": 20,
+            "danceability": 35
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "hip-hop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0aac6fe5",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 80,
+            "energy": 67,
+            "tempo": 143,
+            "acousticness": 22,
+            "instrumentalness": 14,
+            "danceability": 38
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0fc4a0ef",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 83,
+            "energy": 60,
+            "tempo": 135,
+            "acousticness": 24,
+            "instrumentalness": 17,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Levitating",
+          "artist": "Dua Lipa",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "hip-hop"
+          ],
+          "score": 93,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-f4659e81",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Levitating%20Dua%20Lipa",
+          "attributes": {
+            "valence": 86,
+            "energy": 55,
+            "tempo": 118,
+            "acousticness": 23,
+            "instrumentalness": 25,
+            "danceability": 47
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-74c0669b0b52",
+      "userId": "guest",
+      "createdAt": "2026-08-09T22:26:32.900Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T22:26:32.898Z"
+      },
+      "recommendations": [
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 98,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-40d59f2e",
+          "coverUrl": "https://images.unsplash.com/photo-1524567241246-c245c43e2097?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 80,
+            "energy": 66,
+            "tempo": 121,
+            "acousticness": 20,
+            "instrumentalness": 24,
+            "danceability": 49
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "k-pop"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-716d94cc",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 80,
+            "energy": 62,
+            "tempo": 124,
+            "acousticness": 27,
+            "instrumentalness": 13,
+            "danceability": 37
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-5bb7d65a",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 94,
+            "energy": 63,
+            "tempo": 117,
+            "acousticness": 37,
+            "instrumentalness": 28,
+            "danceability": 35
+          }
+        },
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "k-pop"
+          ],
+          "score": 88,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-95032ff8",
+          "coverUrl": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 87,
+            "energy": 64,
+            "tempo": 135,
+            "acousticness": 24,
+            "instrumentalness": 22,
+            "danceability": 37
+          }
+        },
+        {
+          "title": "So What",
+          "artist": "Miles Davis",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e0257138",
+          "coverUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/So%20What%20Miles%20Davis",
+          "attributes": {
+            "valence": 90,
+            "energy": 68,
+            "tempo": 127,
+            "acousticness": 30,
+            "instrumentalness": 18,
+            "danceability": 43
+          }
+        },
+        {
+          "title": "Weightless",
+          "artist": "Marconi Union",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "ambient",
+            "k-pop"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-9e3e262b",
+          "coverUrl": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Weightless%20Marconi%20Union",
+          "attributes": {
+            "valence": 85,
+            "energy": 64,
+            "tempo": 118,
+            "acousticness": 27,
+            "instrumentalness": 29,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e26ec344",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 90,
+            "energy": 60,
+            "tempo": 141,
+            "acousticness": 32,
+            "instrumentalness": 18,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0dbdca47",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 86,
+            "energy": 63,
+            "tempo": 120,
+            "acousticness": 21,
+            "instrumentalness": 20,
+            "danceability": 41
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-4c612e62851c",
+      "userId": "guest",
+      "createdAt": "2026-08-09T22:31:06.468Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T22:31:06.466Z"
+      },
+      "recommendations": [
+        {
+          "title": "Billie Jean",
+          "artist": "Michael Jackson",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 95,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-291aaf00",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Billie%20Jean%20Michael%20Jackson",
+          "attributes": {
+            "valence": 90,
+            "energy": 71,
+            "tempo": 123,
+            "acousticness": 24,
+            "instrumentalness": 25,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Dákiti",
+          "artist": "Bad Bunny",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "reggaeton",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ac2ef5af",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 78,
+            "energy": 72,
+            "tempo": 117,
+            "acousticness": 39,
+            "instrumentalness": 21,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Despacito",
+          "artist": "Luis Fonsi",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "latin",
+            "pop",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6499689f",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Despacito%20Luis%20Fonsi",
+          "attributes": {
+            "valence": 85,
+            "energy": 72,
+            "tempo": 121,
+            "acousticness": 30,
+            "instrumentalness": 21,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-01918a08",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 87,
+            "energy": 70,
+            "tempo": 124,
+            "acousticness": 24,
+            "instrumentalness": 29,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Weightless",
+          "artist": "Marconi Union",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "ambient",
+            "k-pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-05a3efa6",
+          "coverUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Weightless%20Marconi%20Union",
+          "attributes": {
+            "valence": 78,
+            "energy": 61,
+            "tempo": 134,
+            "acousticness": 28,
+            "instrumentalness": 24,
+            "danceability": 47
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-1d1c0f33",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 81,
+            "energy": 68,
+            "tempo": 137,
+            "acousticness": 33,
+            "instrumentalness": 15,
+            "danceability": 34
+          }
+        },
+        {
+          "title": "Master of Puppets",
+          "artist": "Metallica",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "metal",
+            "k-pop"
+          ],
+          "score": 82,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-8e86ab68",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 89,
+            "energy": 69,
+            "tempo": 144,
+            "acousticness": 29,
+            "instrumentalness": 10,
+            "danceability": 31
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-f294c4d1",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 94,
+            "energy": 72,
+            "tempo": 118,
+            "acousticness": 24,
+            "instrumentalness": 14,
+            "danceability": 32
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-f2c4cb87ab22",
+      "userId": "guest",
+      "createdAt": "2026-08-09T22:32:08.514Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T22:32:08.514Z"
+      },
+      "recommendations": [
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-555708f0",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 91,
+            "energy": 69,
+            "tempo": 135,
+            "acousticness": 26,
+            "instrumentalness": 18,
+            "danceability": 46
+          }
+        },
+        {
+          "title": "Smells Like Teen Spirit",
+          "artist": "Nirvana",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e4df04a0",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 81,
+            "energy": 74,
+            "tempo": 144,
+            "acousticness": 31,
+            "instrumentalness": 22,
+            "danceability": 48
+          }
+        },
+        {
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-26cd56d8",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 82,
+            "energy": 62,
+            "tempo": 119,
+            "acousticness": 23,
+            "instrumentalness": 20,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "k-pop"
+          ],
+          "score": 89,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-0e299829",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 76,
+            "energy": 59,
+            "tempo": 131,
+            "acousticness": 31,
+            "instrumentalness": 16,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "electronic",
+            "k-pop"
+          ],
+          "score": 96,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-ecb0803f",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Blinding%20Lights%20The%20Weeknd",
+          "attributes": {
+            "valence": 89,
+            "energy": 59,
+            "tempo": 128,
+            "acousticness": 34,
+            "instrumentalness": 27,
+            "danceability": 39
+          }
+        },
+        {
+          "title": "Shape of You",
+          "artist": "Ed Sheeran",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-2983ef1a",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Shape%20of%20You%20Ed%20Sheeran",
+          "attributes": {
+            "valence": 90,
+            "energy": 60,
+            "tempo": 124,
+            "acousticness": 20,
+            "instrumentalness": 20,
+            "danceability": 48
+          }
+        },
+        {
+          "title": "Master of Puppets",
+          "artist": "Metallica",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "metal",
+            "k-pop"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-3e3c6f68",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 84,
+            "energy": 66,
+            "tempo": 142,
+            "acousticness": 36,
+            "instrumentalness": 12,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-f6260c9a",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 78,
+            "energy": 70,
+            "tempo": 116,
+            "acousticness": 32,
+            "instrumentalness": 24,
+            "danceability": 48
+          }
+        }
+      ],
+      "likes": {}
+    },
+    {
+      "id": "session-e7be05604e6b",
+      "userId": "guest",
+      "createdAt": "2026-08-09T22:34:45.246Z",
+      "answers": {
+        "mood": "alegre",
+        "activity": "ocio",
+        "timeOfDay": "tarde",
+        "genres": [
+          "k-pop"
+        ],
+        "vocalPreference": "ambas",
+        "languages": [
+          "espanol",
+          "ingles"
+        ],
+        "rhythmSpeed": 3,
+        "vocalsType": "sin-preferencia",
+        "instruments": [
+          "guitarra",
+          "piano"
+        ],
+        "bassWeight": "medio",
+        "stylePreference": "ambas",
+        "recentFavorites": [
+          "",
+          "",
+          ""
+        ],
+        "exclusions": ""
+      },
+      "profile": {
+        "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "k-pop"
+        ],
+        "vibes": [
+          "alegre",
+          "Curado",
+          "Local"
+        ],
+        "attributes": {
+          "valence": 85,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 20,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T22:34:45.246Z"
+      },
+      "recommendations": [
+        {
+          "title": "So What",
+          "artist": "Miles Davis",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "jazz",
+            "k-pop"
+          ],
+          "score": 81,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-9d725fbe",
+          "coverUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/So%20What%20Miles%20Davis",
+          "attributes": {
+            "valence": 83,
+            "energy": 59,
+            "tempo": 119,
+            "acousticness": 36,
+            "instrumentalness": 10,
+            "danceability": 34
+          }
+        },
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-7ec13f4c",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 85,
+            "energy": 65,
+            "tempo": 132,
+            "acousticness": 29,
+            "instrumentalness": 27,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Vampire",
+          "artist": "Olivia Rodrigo",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "rock",
+            "k-pop"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-99efc598",
+          "coverUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 86,
+            "energy": 59,
+            "tempo": 116,
+            "acousticness": 38,
+            "instrumentalness": 29,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Hotel California",
+          "artist": "Eagles",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "rock",
+            "k-pop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-acef3bc6",
+          "coverUrl": "https://images.unsplash.com/photo-1487180142328-0c4e37023af5?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Hotel%20California%20Eagles",
+          "attributes": {
+            "valence": 90,
+            "energy": 72,
+            "tempo": 142,
+            "acousticness": 22,
+            "instrumentalness": 12,
+            "danceability": 40
+          }
+        },
+        {
+          "title": "Lose Yourself",
+          "artist": "Eminem",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-88ccf1b8",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+          "attributes": {
+            "valence": 88,
+            "energy": 69,
+            "tempo": 138,
+            "acousticness": 28,
+            "instrumentalness": 16,
+            "danceability": 44
+          }
+        },
+        {
+          "title": "Levitating",
+          "artist": "Dua Lipa",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 94,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-6b6bf275",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Levitating%20Dua%20Lipa",
+          "attributes": {
+            "valence": 76,
+            "energy": 72,
+            "tempo": 140,
+            "acousticness": 27,
+            "instrumentalness": 26,
+            "danceability": 41
+          }
+        },
+        {
+          "title": "Clair de Lune",
+          "artist": "Claude Debussy",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "classical",
+            "k-pop"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c962d399",
+          "coverUrl": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Clair%20de%20Lune%20Claude%20Debussy",
+          "attributes": {
+            "valence": 88,
+            "energy": 66,
+            "tempo": 131,
+            "acousticness": 21,
+            "instrumentalness": 29,
+            "danceability": 33
+          }
+        },
+        {
+          "title": "Cruel Summer",
+          "artist": "Taylor Swift",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "pop",
+            "k-pop"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-c4135c0f",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Cruel%20Summer%20Taylor%20Swift",
+          "attributes": {
+            "valence": 89,
+            "energy": 67,
+            "tempo": 131,
+            "acousticness": 38,
+            "instrumentalness": 23,
+            "danceability": 44
           }
         }
       ],

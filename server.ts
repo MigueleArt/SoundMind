@@ -13,7 +13,7 @@ import { GoogleGenAI, Type } from '@google/genai';
 
 // Initialize server variables
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const DB_FILE = path.join(process.cwd(), 'db.json');
 const TOKEN_SECRET = process.env.TOKEN_SECRET || 'soundmind_super_secret_key_2026';
 
@@ -419,6 +419,41 @@ Genera canciones reales y un perfil altamente profesional y poético pero precis
   } catch (error) {
     console.error('Error generating recommendations:', error);
     res.status(500).json({ error: 'Hubo un error al procesar tu perfil musical. Por favor, intenta de nuevo.' });
+  }
+});
+
+// Spotify PKCE token exchange endpoint for SPA
+app.post('/api/spotify/token', async (req: any, res) => {
+  const { code, codeVerifier } = req.body || {};
+  if (!code || !codeVerifier) return res.status(400).json({ error: 'Missing code or codeVerifier' });
+
+  const clientId = process.env.VITE_SPOTIFY_CLIENT_ID || process.env.SPOTIFY_CLIENT_ID;
+  const redirectUri = process.env.VITE_SPOTIFY_REDIRECT_URI || (req.headers.origin || `http://localhost:${PORT}`);
+  if (!clientId) return res.status(500).json({ error: 'Spotify client id not configured on server' });
+
+  try {
+    const params: Record<string, string> = {
+      grant_type: 'authorization_code',
+      code: String(code),
+      redirect_uri: String(redirectUri),
+      client_id: String(clientId),
+      code_verifier: String(codeVerifier)
+    };
+
+    const body = new URLSearchParams(params);
+
+    const tokenRes = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    });
+
+    const data = await tokenRes.json();
+    if (!tokenRes.ok) return res.status(tokenRes.status).json(data);
+    res.json(data);
+  } catch (err) {
+    console.error('Spotify token exchange error', err);
+    res.status(500).json({ error: 'spotify token exchange failed' });
   }
 });
 

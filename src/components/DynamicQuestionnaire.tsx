@@ -154,12 +154,12 @@ export default function DynamicQuestionnaire({ onGenerate, loading }: DynamicQue
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isStepValid()) {
-      onGenerate(answers);
-    }
-  };
+const handleSubmit = (e?: React.SyntheticEvent) => {
+  if (e) e.preventDefault();
+  if (isStepValid()) {
+    onGenerate(answers);
+  }
+};
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-[32px] overflow-hidden shadow-2xl relative backdrop-blur-xl">

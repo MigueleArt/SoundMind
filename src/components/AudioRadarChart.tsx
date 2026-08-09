@@ -136,7 +136,7 @@ export default function AudioRadarChart({ attributes }: AudioRadarChartProps) {
             const outerTextOffset = getCoordinates(i, 108); // Outwards from the edge
             
             // Adjust alignment depending on position
-            let textAnchor = 'middle';
+            let textAnchor: 'start' | 'middle' | 'end' = 'middle';
             if (outerTextOffset.x < center - 15) textAnchor = 'end';
             else if (outerTextOffset.x > center + 15) textAnchor = 'start';
 
