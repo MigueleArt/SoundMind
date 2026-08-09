@@ -16,6 +16,7 @@ import rateLimit from 'express-rate-limit';
 import { env } from './backend/config/env';
 import { supabaseAdmin } from './backend/config/supabase';
 import { authRouter } from './backend/routes/auth.routes';
+import { historyRouter } from './backend/routes/history.routes';
 
 // Initialize server variables
 const app = express();
@@ -218,6 +219,7 @@ app.get('/api/health/database', async (_req, res) => {
 });
 
 app.use('/api/auth', authRouter);
+app.use('/api/history', historyRouter);
 
 // --- API Endpoints ---
 
