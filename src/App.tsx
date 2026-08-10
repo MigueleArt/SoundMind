@@ -9,7 +9,8 @@ import {
   Activity, ArrowRight, Music2, Share2, Shield, Disc, CheckCircle, Flame
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { QuestionnaireAnswers, RecommendationHistoryItem } from './types';
+import { QuestionnaireAnswers, RecommendationHistoryItem, User as UserType, AuthTokens } from './types';
+import { apiFetch, authStorage } from './services/api';
 
 // Importing custom sub-components
 import AuthModal from './components/AuthModal';
@@ -28,7 +29,7 @@ const LOADING_STEPS = [
 ];
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState<{ id: string; username: string } | null>(null);
+  const [currentUser, setCurrentUser] = useState<UserType | null>(null);
   const [authToken, setAuthToken] = useState<string | null>(null);
   const [history, setHistory] = useState<RecommendationHistoryItem[]>([]);
   const [selectedSession, setSelectedSession] = useState<RecommendationHistoryItem | null>(null);
@@ -40,13 +41,12 @@ export default function App() {
 
   // 1. Synchronize Auth Session on Mount
   useEffect(() => {
-    const savedToken = localStorage.getItem('soundmind_token');
-    const savedUser = localStorage.getItem('soundmind_user');
+    const savedToken = authStorage.getToken();
+    const savedUser = authStorage.getUser();
     if (savedToken && savedUser) {
-      const parsedUser = JSON.parse(savedUser);
       setAuthToken(savedToken);
-      setCurrentUser(parsedUser);
-      fetchHistory(savedToken);
+      setCurrentUser(savedUser);
+      fetchHistory();
     }
   }, []);
 
@@ -62,64 +62,53 @@ export default function App() {
     return () => clearInterval(interval);
   }, [loading]);
 
-  // Fetch past sessions history for authenticated users
-  async function fetchHistory(token: string) {
+  // Fetch past sessions history (SOLO para usuarios autenticados, se omite si es invitado)
+  async function fetchHistory() {
+    const token = authStorage.getToken();
+    if (!token) return; // No consultar historial si el usuario es invitado
+
     try {
-      const res = await fetch('/api/history', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setHistory(data.history || []);
-      }
+      const data = await apiFetch('/api/history');
+      setHistory(data.history || []);
     } catch (err) {
       console.error('Error fetching musical history:', err);
     }
   }
 
   // Handle successful login or registration
-  function handleAuthSuccess(token: string, user: { id: string; username: string }) {
-    localStorage.setItem('soundmind_token', token);
-    localStorage.setItem('soundmind_user', JSON.stringify(user));
-    setAuthToken(token);
+  function handleAuthSuccess(tokens: AuthTokens, user: UserType) {
+    authStorage.saveSession(tokens, user);
+    setAuthToken(tokens.token);
     setCurrentUser(user);
-    fetchHistory(token);
+    fetchHistory();
   }
 
   // Handle logout
-  function handleLogout() {
-    localStorage.removeItem('soundmind_token');
-    localStorage.removeItem('soundmind_user');
-    setAuthToken(null);
-    setCurrentUser(null);
-    setHistory([]);
-    setSelectedSession(null);
-    setCurrentPage('home');
+  async function handleLogout() {
+    try {
+      if (authToken) {
+        await apiFetch('/api/auth/logout', { method: 'POST' });
+      }
+    } catch (err) {
+      console.error('Error notificando logout al backend:', err);
+    } finally {
+      authStorage.clearSession();
+      setAuthToken(null);
+      setCurrentUser(null);
+      setHistory([]);
+      setSelectedSession(null);
+      setCurrentPage('home');
+    }
   }
 
   // Send questionnaire answers to backend to query Gemini
   async function handleGenerateRecommendations(answers: QuestionnaireAnswers) {
     setLoading(true);
     try {
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json'
-      };
-      if (authToken) {
-        headers['Authorization'] = `Bearer ${authToken}`;
-      }
-
-      const res = await fetch('/api/recommendations/generate', {
+      const data = await apiFetch<RecommendationHistoryItem>('/api/recommendations/generate', {
         method: 'POST',
-        headers,
         body: JSON.stringify({ answers })
       });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || 'Algo salió mal al obtener recomendaciones.');
-      }
 
       // Add to session lists
       setSelectedSession(data);
@@ -146,16 +135,8 @@ export default function App() {
     setLikedState(newLikedState);
 
     try {
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json'
-      };
-      if (authToken) {
-        headers['Authorization'] = `Bearer ${authToken}`;
-      }
-
-      await fetch('/api/recommendations/like', {
+      await apiFetch('/api/recommendations/like', {
         method: 'POST',
-        headers,
         body: JSON.stringify({
           sessionId: selectedSession.id,
           songId,
