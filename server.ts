@@ -553,43 +553,47 @@ Genera canciones reales y un perfil altamente profesional y poético pero precis
   },
 );
 
-async function startServer() {
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: {
-        middlewareMode: true
-      },
-      appType: 'spa'
-    });
+if (!process.env.VERCEL) {
+  async function startServer() {
+    if (process.env.NODE_ENV !== 'production') {
+      const vite = await createViteServer({
+        server: {
+          middlewareMode: true
+        },
+        appType: 'spa'
+      });
 
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(
-      process.cwd(),
-      'dist'
-    );
+      app.use(vite.middlewares);
+    } else {
+      const distPath = path.join(
+        process.cwd(),
+        'dist'
+      );
 
-    app.use(express.static(distPath));
+      app.use(express.static(distPath));
 
-    app.get('*', (_req, res) => {
-      res.sendFile(
-        path.join(distPath, 'index.html')
+      app.get('*', (_req, res) => {
+        res.sendFile(
+          path.join(distPath, 'index.html')
+        );
+      });
+    }
+
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(
+        `SoundMind App running on port ${PORT}`
       );
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(
-      `SoundMind App running on port ${PORT}`
+  startServer().catch((error) => {
+    console.error(
+      'No se pudo iniciar SoundMind:',
+      error
     );
+
+    process.exit(1);
   });
 }
 
-startServer().catch((error) => {
-  console.error(
-    'No se pudo iniciar SoundMind:',
-    error
-  );
-
-  process.exit(1);
-});
+export default app;
