@@ -17,6 +17,7 @@ import AuthModal from './components/AuthModal';
 import DynamicQuestionnaire from './components/DynamicQuestionnaire';
 import MusicResults from './components/MusicResults';
 import ProfileDashboard from './components/ProfileDashboard';
+import GlobalAudioPlayer from './components/GlobalAudioPlayer';
 
 const LOADING_STEPS = [
   'Iniciando alineación del algoritmo híbrido...',
@@ -557,6 +558,9 @@ export default function App() {
       <footer className="bg-zinc-950/25 border-t border-zinc-900 py-6 text-center text-xs text-zinc-500">
         <p>© 2026 SoundMind. Diseñado con cariño por investigadores de datos y psicólogos del sonido.</p>
       </footer>
+
+      {/* Persistent Global Audio Player */}
+      <GlobalAudioPlayer />
 
       {/* Global Auth Modal portal */}
       <AuthModal

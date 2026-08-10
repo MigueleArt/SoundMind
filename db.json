@@ -20,6 +20,13 @@
       "hash": "804dd020195998cfb8495954ea85da3a0e1ab5beccdf94130afa4d5fab6f881051a4a81bcde117b4cb442d978cb69c022488435e79d5d08c959ff89abd6da9d4",
       "salt": "67d5a4b50c8fce6dca07d25aa9d57484",
       "createdAt": "2026-08-09T22:38:03.610Z"
+    },
+    {
+      "id": "c9c982c5eeb2dce3",
+      "username": "Oscar",
+      "hash": "73c6956930f19ba761cec7ac5fda08c1a9df3e49350fefe05c47a517fa22ec43895a32654d1658df91d337de736d729aa280cf0d1d4ca8d49a8b77375d52902c",
+      "salt": "0a1658c4f70431a8a0418c87486bfd0f",
+      "createdAt": "2026-08-09T04:41:25.235Z"
     }
   ],
   "history": [
@@ -1208,6 +1215,7 @@
       "likes": {}
     },
     {
+<<<<<<< HEAD
       "id": "session-482d4f513ca2",
       "userId": "guest",
       "createdAt": "2026-08-09T20:37:37.478Z",
@@ -1220,6 +1228,20 @@
           "pop"
         ],
         "vocalPreference": "ambas",
+=======
+      "id": "session-d30db410ac1a",
+      "userId": "guest",
+      "createdAt": "2026-08-09T05:23:19.523Z",
+      "answers": {
+        "mood": "melancolico",
+        "activity": "ocio",
+        "timeOfDay": "madrugada",
+        "genres": [
+          "hip-hop",
+          "reggaeton"
+        ],
+        "vocalPreference": "instrumental",
+>>>>>>> main
         "languages": [
           "espanol",
           "ingles"
@@ -1240,6 +1262,7 @@
         "exclusions": ""
       },
       "profile": {
+<<<<<<< HEAD
         "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
         "dominantGenres": [
           "jazz",
@@ -1247,10 +1270,20 @@
         ],
         "vibes": [
           "alegre",
+=======
+        "description": "Hemos analizado tu preferencia por sonidos con estado melancolico y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
+        "dominantGenres": [
+          "hip-hop",
+          "reggaeton"
+        ],
+        "vibes": [
+          "melancolico",
+>>>>>>> main
           "Curado",
           "Local"
         ],
         "attributes": {
+<<<<<<< HEAD
           "valence": 85,
           "energy": 65,
           "tempo": 130,
@@ -1331,12 +1364,26 @@
           }
         },
         {
+=======
+          "valence": 30,
+          "energy": 65,
+          "tempo": 130,
+          "acousticness": 30,
+          "instrumentalness": 90,
+          "danceability": 40
+        },
+        "createdAt": "2026-08-09T05:23:19.523Z"
+      },
+      "recommendations": [
+        {
+>>>>>>> main
           "title": "Midnight City",
           "artist": "M83",
           "album": "Grandes Éxitos",
           "genres": [
             "electronic",
             "indie",
+<<<<<<< HEAD
             "jazz",
             "pop"
           ],
@@ -1525,6 +1572,23 @@
             "acousticness": 24,
             "instrumentalness": 29,
             "danceability": 33
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 90,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-fd7f3f4a",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 20,
+            "energy": 58,
+            "tempo": 123,
+            "acousticness": 20,
+            "instrumentalness": 90,
+            "danceability": 32
+>>>>>>> main
           }
         },
         {
@@ -1533,6 +1597,7 @@
           "album": "Grandes Éxitos",
           "genres": [
             "rock",
+<<<<<<< HEAD
             "jazz",
             "pop"
           ],
@@ -1835,6 +1900,24 @@
             "instrumentalness": 16,
             "danceability": 49
           }
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-9b6a199e",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit%20Nirvana",
+          "attributes": {
+            "valence": 23,
+            "energy": 61,
+            "tempo": 121,
+            "acousticness": 30,
+            "instrumentalness": 99,
+            "danceability": 40
+          }
+>>>>>>> main
         },
         {
           "title": "Bohemian Rhapsody",
@@ -1843,6 +1926,7 @@
           "genres": [
             "rock",
             "classic",
+<<<<<<< HEAD
             "pop",
             "jazz"
           ],
@@ -1880,6 +1964,23 @@
             "acousticness": 26,
             "instrumentalness": 14,
             "danceability": 43
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-49c31494",
+          "coverUrl": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Bohemian%20Rhapsody%20Queen",
+          "attributes": {
+            "valence": 37,
+            "energy": 61,
+            "tempo": 133,
+            "acousticness": 20,
+            "instrumentalness": 97,
+            "danceability": 33
+>>>>>>> main
           }
         },
         {
@@ -1888,6 +1989,7 @@
           "album": "Grandes Éxitos",
           "genres": [
             "jazz",
+<<<<<<< HEAD
             "pop"
           ],
           "score": 93,
@@ -2141,6 +2243,46 @@
             "acousticness": 32,
             "instrumentalness": 19,
             "danceability": 41
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-3eec28fa",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/So%20What%20Miles%20Davis",
+          "attributes": {
+            "valence": 27,
+            "energy": 55,
+            "tempo": 133,
+            "acousticness": 22,
+            "instrumentalness": 99,
+            "danceability": 32
+          }
+        },
+        {
+          "title": "Strobe",
+          "artist": "deadmau5",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 98,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-36a0c557",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Strobe%20deadmau5",
+          "attributes": {
+            "valence": 35,
+            "energy": 65,
+            "tempo": 133,
+            "acousticness": 23,
+            "instrumentalness": 91,
+            "danceability": 39
+>>>>>>> main
           }
         },
         {
@@ -2150,6 +2292,7 @@
           "genres": [
             "reggaeton",
             "latin",
+<<<<<<< HEAD
             "pop",
             "jazz"
           ],
@@ -2165,21 +2308,95 @@
             "acousticness": 30,
             "instrumentalness": 13,
             "danceability": 35
+=======
+            "hip-hop"
+          ],
+          "score": 98,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-75e40845",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Tusa%20Karol%20G",
+          "attributes": {
+            "valence": 29,
+            "energy": 70,
+            "tempo": 140,
+            "acousticness": 28,
+            "instrumentalness": 94,
+            "danceability": 36
+          }
+        },
+        {
+          "title": "Master of Puppets",
+          "artist": "Metallica",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "metal",
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 80,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-6174e371",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 23,
+            "energy": 62,
+            "tempo": 119,
+            "acousticness": 28,
+            "instrumentalness": 82,
+            "danceability": 42
+          }
+        },
+        {
+          "title": "Despacito",
+          "artist": "Luis Fonsi",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "latin",
+            "pop",
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 99,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado melancolico y complementar la textura de los bajos y agudos.",
+          "id": "song-a701453d",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Despacito%20Luis%20Fonsi",
+          "attributes": {
+            "valence": 36,
+            "energy": 65,
+            "tempo": 124,
+            "acousticness": 26,
+            "instrumentalness": 86,
+            "danceability": 44
+>>>>>>> main
           }
         }
       ],
       "likes": {}
     },
     {
+<<<<<<< HEAD
       "id": "session-51c1355dd1d2",
       "userId": "guest",
       "createdAt": "2026-08-09T21:17:46.786Z",
+=======
+      "id": "session-2eb699647126",
+      "userId": "c9c982c5eeb2dce3",
+      "createdAt": "2026-08-09T05:23:47.532Z",
+>>>>>>> main
       "answers": {
         "mood": "alegre",
         "activity": "ocio",
         "timeOfDay": "tarde",
         "genres": [
+<<<<<<< HEAD
           "hip-hop"
+=======
+          "hip-hop",
+          "reggaeton"
+>>>>>>> main
         ],
         "vocalPreference": "ambas",
         "languages": [
@@ -2204,7 +2421,12 @@
       "profile": {
         "description": "Hemos analizado tu preferencia por sonidos con estado alegre y construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local que de todas formas te proveerá excelentes recomendaciones.",
         "dominantGenres": [
+<<<<<<< HEAD
           "hip-hop"
+=======
+          "hip-hop",
+          "reggaeton"
+>>>>>>> main
         ],
         "vibes": [
           "alegre",
@@ -2219,6 +2441,7 @@
           "instrumentalness": 20,
           "danceability": 40
         },
+<<<<<<< HEAD
         "createdAt": "2026-08-09T21:17:46.786Z"
       },
       "recommendations": [
@@ -2243,6 +2466,31 @@
             "acousticness": 38,
             "instrumentalness": 10,
             "danceability": 42
+=======
+        "createdAt": "2026-08-09T05:23:47.531Z"
+      },
+      "recommendations": [
+        {
+          "title": "SICKO MODE",
+          "artist": "Travis Scott",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-e758a83d",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/SICKO%20MODE%20Travis%20Scott",
+          "attributes": {
+            "valence": 86,
+            "energy": 73,
+            "tempo": 128,
+            "acousticness": 29,
+            "instrumentalness": 22,
+            "danceability": 32
+>>>>>>> main
           }
         },
         {
@@ -2253,6 +2501,7 @@
             "reggaeton",
             "hip-hop"
           ],
+<<<<<<< HEAD
           "score": 88,
           "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
           "id": "song-497fb576",
@@ -2539,15 +2788,80 @@
             "tempo": 138,
             "acousticness": 21,
             "instrumentalness": 13,
+=======
+          "score": 97,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-cb01bcd1",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/D%C3%A1kiti%20Bad%20Bunny",
+          "attributes": {
+            "valence": 75,
+            "energy": 68,
+            "tempo": 123,
+            "acousticness": 35,
+            "instrumentalness": 21,
+>>>>>>> main
             "danceability": 36
           }
         },
         {
+<<<<<<< HEAD
+=======
+          "title": "Dynamite",
+          "artist": "BTS",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "k-pop",
+            "pop",
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 91,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-b80234aa",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Dynamite%20BTS",
+          "attributes": {
+            "valence": 75,
+            "energy": 70,
+            "tempo": 124,
+            "acousticness": 38,
+            "instrumentalness": 11,
+            "danceability": 49
+          }
+        },
+        {
+          "title": "Midnight City",
+          "artist": "M83",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "indie",
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 92,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-2518132b",
+          "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Midnight%20City%20M83",
+          "attributes": {
+            "valence": 77,
+            "energy": 59,
+            "tempo": 138,
+            "acousticness": 31,
+            "instrumentalness": 16,
+            "danceability": 48
+          }
+        },
+        {
+>>>>>>> main
           "title": "Billie Jean",
           "artist": "Michael Jackson",
           "album": "Grandes Éxitos",
           "genres": [
             "pop",
+<<<<<<< HEAD
             "k-pop"
           ],
           "score": 85,
@@ -2561,10 +2875,27 @@
             "tempo": 128,
             "acousticness": 31,
             "instrumentalness": 29,
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 84,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-8c53fff2",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Billie%20Jean%20Michael%20Jackson",
+          "attributes": {
+            "valence": 89,
+            "energy": 73,
+            "tempo": 119,
+            "acousticness": 37,
+            "instrumentalness": 13,
+>>>>>>> main
             "danceability": 42
           }
         },
         {
+<<<<<<< HEAD
           "title": "Take Five",
           "artist": "Dave Brubeck",
           "album": "Grandes Éxitos",
@@ -2587,12 +2918,15 @@
           }
         },
         {
+=======
+>>>>>>> main
           "title": "Vampire",
           "artist": "Olivia Rodrigo",
           "album": "Grandes Éxitos",
           "genres": [
             "pop",
             "rock",
+<<<<<<< HEAD
             "k-pop"
           ],
           "score": 81,
@@ -2820,10 +3154,27 @@
             "tempo": 118,
             "acousticness": 31,
             "instrumentalness": 24,
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 86,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-408ca11c",
+          "coverUrl": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Vampire%20Olivia%20Rodrigo",
+          "attributes": {
+            "valence": 89,
+            "energy": 60,
+            "tempo": 134,
+            "acousticness": 28,
+            "instrumentalness": 18,
+>>>>>>> main
             "danceability": 42
           }
         },
         {
+<<<<<<< HEAD
           "title": "Blinding Lights",
           "artist": "The Weeknd",
           "album": "Grandes Éxitos",
@@ -2843,6 +3194,27 @@
             "tempo": 119,
             "acousticness": 24,
             "instrumentalness": 13,
+=======
+          "title": "Strobe",
+          "artist": "deadmau5",
+          "album": "Grandes Éxitos",
+          "genres": [
+            "electronic",
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 85,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-677935bd",
+          "coverUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Strobe%20deadmau5",
+          "attributes": {
+            "valence": 83,
+            "energy": 62,
+            "tempo": 131,
+            "acousticness": 25,
+            "instrumentalness": 20,
+>>>>>>> main
             "danceability": 45
           }
         },
@@ -2852,6 +3224,7 @@
           "album": "Grandes Éxitos",
           "genres": [
             "metal",
+<<<<<<< HEAD
             "ambient"
           ],
           "score": 80,
@@ -4965,6 +5338,24 @@
             "instrumentalness": 23,
             "danceability": 44
           }
+=======
+            "hip-hop",
+            "reggaeton"
+          ],
+          "score": 83,
+          "whyRecommend": "Seleccionada por nuestro algoritmo para potenciar tu estado alegre y complementar la textura de los bajos y agudos.",
+          "id": "song-23c6e71d",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop",
+          "spotifyUrl": "https://open.spotify.com/search/Master%20of%20Puppets%20Metallica",
+          "attributes": {
+            "valence": 93,
+            "energy": 64,
+            "tempo": 140,
+            "acousticness": 26,
+            "instrumentalness": 13,
+            "danceability": 36
+          }
+>>>>>>> main
         }
       ],
       "likes": {}
