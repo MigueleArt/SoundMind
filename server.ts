@@ -31,6 +31,7 @@ const PORT = env.PORT;
 
 
 // Parse request body
+app.set("trust proxy", 1);
 app.disable("x-powered-by");
 
 app.use(
