@@ -1,23 +1,65 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
-import { Play, Pause, Volume2, Music, ExternalLink } from 'lucide-react';
+import { Play, Pause, Volume2, Music, ExternalLink, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function GlobalAudioPlayer() {
   const { currentSong, isPlaying, volume, togglePlay, setVolume } = usePlayerStore();
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [isLoadingAudio, setIsLoadingAudio] = useState(false);
+
+  // Efecto para obtener el URL de previsualización (30s)
+  useEffect(() => {
+    if (!currentSong) return;
+
+    // Si ya viene del backend (Spotify)
+    const existingPreview = currentSong.previewUrl || (currentSong as any).preview_url;
+    if (existingPreview) {
+      setPreviewUrl(existingPreview);
+      return;
+    }
+
+    // Si no tiene, buscamos dinámicamente un clip de 30s en iTunes API (es gratis y no requiere auth)
+    let isMounted = true;
+    setIsLoadingAudio(true);
+    setPreviewUrl(null);
+
+    const fetchAudioClip = async () => {
+      try {
+        const query = encodeURIComponent(`${currentSong.title} ${currentSong.artist}`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${query}&media=music&entity=song&limit=1`);
+        const data = await res.json();
+        
+        if (isMounted && data.results && data.results.length > 0 && data.results[0].previewUrl) {
+          setPreviewUrl(data.results[0].previewUrl);
+        }
+      } catch (err) {
+        console.error("Error obteniendo el preview de audio", err);
+      } finally {
+        if (isMounted) setIsLoadingAudio(false);
+      }
+    };
+
+    fetchAudioClip();
+
+    return () => { isMounted = false; };
+  }, [currentSong]);
 
   useEffect(() => {
     if (audioRef.current) {
       if (isPlaying) {
-        audioRef.current.play().catch(() => {
-          // Ignorar auto-play bloqueado por el navegador
-        });
+        // Asegurarnos de que hay audio cargado antes de intentar reproducir
+        if (previewUrl) {
+          audioRef.current.play().catch(() => {
+            // Ignorar auto-play bloqueado por el navegador
+          });
+        }
       } else {
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, currentSong]);
+  }, [isPlaying, previewUrl]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -33,11 +75,11 @@ export default function GlobalAudioPlayer() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-xl bg-black/80 border border-white/10 backdrop-blur-xl rounded-2xl p-3 flex items-center justify-between shadow-2xl z-50 select-none"
+        className="fixed bottom-20 md:bottom-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-xl bg-black/80 border border-white/10 backdrop-blur-xl rounded-2xl p-3 flex items-center justify-between shadow-2xl z-50 select-none"
       >
         <audio
           ref={audioRef}
-          src={currentSong.spotifyUrl} 
+          src={previewUrl || ""} 
           onEnded={togglePlay}
         />
 

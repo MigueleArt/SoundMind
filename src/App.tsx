@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { 
   Headphones, Compass, User, History, Sparkles, LogOut, LogIn, Menu, 
-  Activity, ArrowRight, Music2, Share2, Shield, Disc, CheckCircle, Flame
+  Activity, ArrowRight, Music2, Share2, Shield, Disc, CheckCircle, Flame, Search, Heart, Play, Pause
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { QuestionnaireAnswers, RecommendationHistoryItem } from './types';
@@ -15,9 +15,13 @@ import { getCodeFromUrl } from './services/spotify';
 // Importing custom sub-components
 import AuthModal from './components/AuthModal';
 import DynamicQuestionnaire from './components/DynamicQuestionnaire';
+import SearchMusic from './components/SearchMusic';
 import MusicResults from './components/MusicResults';
 import ProfileDashboard from './components/ProfileDashboard';
 import GlobalAudioPlayer from './components/GlobalAudioPlayer';
+import { usePlayerStore } from './store/usePlayerStore';
+import { SongRecommendation } from './types';
+import { useRouter } from './hooks/useRouter';
 
 const LOADING_STEPS = [
   'Iniciando alineación del algoritmo híbrido...',
@@ -35,11 +39,28 @@ export default function App() {
   const [spotifyToken, setSpotifyToken] = useState<string | null>(null);
   const [history, setHistory] = useState<RecommendationHistoryItem[]>([]);
   const [selectedSession, setSelectedSession] = useState<RecommendationHistoryItem | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'questionnaire' | 'results' | 'profile'>('home');
+  const { currentPath, navigate } = useRouter('home');
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingStepIdx, setLoadingStepIdx] = useState(0);
   const [likedState, setLikedState] = useState<Record<string, boolean>>({});
+
+  const { playSong, currentSong, isPlaying, togglePlay } = usePlayerStore();
+
+  const likedSongs = useMemo(() => {
+    const songsMap = new Map<string, SongRecommendation>();
+    history.forEach(session => {
+      Object.keys(session.likes || {}).forEach(songId => {
+        if (session.likes[songId]) {
+          const song = session.recommendations.find(r => r.id === songId);
+          if (song) {
+            songsMap.set(songId, song);
+          }
+        }
+      });
+    });
+    return Array.from(songsMap.values()).reverse(); // most recent first
+  }, [history]);
 
   // 1. Synchronize Auth Session on Mount
   useEffect(() => {
@@ -195,6 +216,44 @@ export default function App() {
     }
   }
 
+  // Handle direct song search
+  async function handleSearchQuery(query: string) {
+    setLoading(true);
+    try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json'
+      };
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
+      const res = await fetch('/api/recommendations/search', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ query })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Algo salió mal al buscar recomendaciones.');
+      }
+
+      setSelectedSession(data);
+      setLikedState({});
+      if (currentUser) {
+        setHistory(prev => [...prev, data]);
+      }
+      
+      setCurrentPage('results');
+    } catch (error: any) {
+      console.error('Error al generar recomendaciones por búsqueda:', error);
+      alert(error?.message || 'Hubo un problema al buscar. Por favor, intenta de nuevo.');
+      setCurrentPage('search');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   // Trigger feedback interactions (likes/dislikes)
   async function handleLikeChange(songId: string, isLiked: boolean) {
     if (!selectedSession) return;
@@ -239,10 +298,41 @@ export default function App() {
     }
   }
 
+  async function handleStandaloneLike(song: SongRecommendation) {
+    if (!currentUser) {
+      setIsAuthOpen(true);
+      return;
+    }
+    try {
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
+
+      const res = await fetch('/api/recommendations/standalone-like', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ song })
+      });
+
+      if (res.ok) {
+        // Update history cache to instantly show liked state
+        const data = await res.json();
+        setHistory(prev => {
+          const index = prev.findIndex(h => h.id === data.session.id);
+          if (index === -1) return [...prev, data.session];
+          const newHistory = [...prev];
+          newHistory[index] = data.session;
+          return newHistory;
+        });
+      }
+    } catch (err) {
+      console.error('Error submitting standalone like:', err);
+    }
+  }
+
   function handleSelectHistoricalSession(session: RecommendationHistoryItem) {
     setSelectedSession(session);
     setLikedState(session.likes || {});
-    setCurrentPage('results');
+    navigate('results');
   }
 
   return (
@@ -256,7 +346,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <button 
             type="button"
-            onClick={() => setCurrentPage('home')}
+            onClick={() => navigate('home')}
             className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-white cursor-pointer group"
           >
             <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-cyan-400 p-[1.5px] flex items-center justify-center shadow-lg shadow-purple-500/20 transition-all">
@@ -270,12 +360,12 @@ export default function App() {
           </button>
 
           {/* Nav Links */}
-          <nav className="flex items-center gap-1 md:gap-3">
+          <nav className="hidden md:flex items-center gap-1 md:gap-3">
             <button
               type="button"
-              onClick={() => setCurrentPage('home')}
+              onClick={() => navigate('home')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg tracking-wider cursor-pointer transition-colors ${
-                currentPage === 'home' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
+                currentPath === 'home' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
               }`}
             >
               Inicio
@@ -284,20 +374,32 @@ export default function App() {
               type="button"
               onClick={() => {
                 setSelectedSession(null);
-                setCurrentPage('questionnaire');
+                navigate('questionnaire');
               }}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg tracking-wider cursor-pointer transition-colors ${
-                currentPage === 'questionnaire' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
+                currentPath === 'questionnaire' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
               }`}
             >
               Test
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedSession(null);
+                navigate('search');
+              }}
+              className={`px-3 py-1.5 text-xs font-semibold rounded-lg tracking-wider cursor-pointer transition-colors flex items-center gap-1 ${
+                currentPath === 'search' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Search size={12} /> Buscar
+            </button>
             {currentUser && (
               <button
                 type="button"
-                onClick={() => setCurrentPage('profile')}
+                onClick={() => navigate('profile')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg tracking-wider cursor-pointer transition-colors ${
-                  currentPage === 'profile' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
+                  currentPath === 'profile' ? 'text-white border-b-2 border-cyan-500 rounded-none pb-0.5' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 Perfil
@@ -337,7 +439,7 @@ export default function App() {
       </header>
 
       {/* Main Container screen content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-8 py-8 h-full">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-8 py-8 pb-24 md:pb-8 h-full">
         {/* Loading Screen Overlay */}
         {loading ? (
           <div className="min-h-[70vh] flex flex-col items-center justify-center p-8 space-y-8 select-none">
@@ -373,7 +475,7 @@ export default function App() {
         ) : (
           <AnimatePresence mode="wait">
             {/* SCREEN 1: LANDING/HOME */}
-            {currentPage === 'home' && (
+            {currentPath === 'home' && (
               <motion.div 
                 key="home"
                 initial={{ opacity: 0, y: 10 }}
@@ -400,7 +502,7 @@ export default function App() {
                         type="button"
                         onClick={() => {
                           setSelectedSession(null);
-                          setCurrentPage('questionnaire');
+                          navigate('questionnaire');
                         }}
                         className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-semibold text-xs rounded-xl cursor-pointer shadow-lg shadow-cyan-500/20 active:scale-95 transition-all animate-shimmer"
                       >
@@ -411,7 +513,7 @@ export default function App() {
                         type="button"
                         onClick={() => {
                           if (currentUser) {
-                            setCurrentPage('profile');
+                            navigate('profile');
                           } else {
                             setIsAuthOpen(true);
                           }
@@ -462,6 +564,43 @@ export default function App() {
                   </div>
                 </div>
 
+                {/* Tus Favoritos Feed - Only if user is logged in and has liked songs */}
+                {currentUser && likedSongs.length > 0 && (
+                  <div className="pt-10 border-t border-white/10">
+                    <h3 className="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2">
+                      <Heart className="text-pink-500 fill-pink-500" /> Tus Favoritos Recientes
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {likedSongs.slice(0, 8).map((song) => {
+                        const isThisPlaying = currentSong?.id === song.id && isPlaying;
+                        return (
+                          <div 
+                            key={song.id}
+                            className="bg-white/5 border border-white/10 rounded-2xl p-4 flex gap-4 items-center backdrop-blur-xl hover:bg-white/10 transition-all group"
+                          >
+                            <div 
+                              className="relative w-14 h-14 rounded-xl overflow-hidden cursor-pointer flex-shrink-0"
+                              onClick={() => {
+                                if (currentSong?.id === song.id) togglePlay();
+                                else playSong(song);
+                              }}
+                            >
+                              <img src={song.coverUrl} alt={song.title} className="w-full h-full object-cover" />
+                              <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity ${isThisPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                {isThisPlaying ? <Pause size={20} className="text-white" /> : <Play size={20} className="text-white ml-0.5" />}
+                              </div>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-sm font-bold text-white truncate" title={song.title}>{song.title}</h4>
+                              <p className="text-xs text-zinc-400 truncate" title={song.artist}>{song.artist}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Technical Information features block - Frosted Glass panel design */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-white/10">
                   <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-3">
@@ -498,7 +637,7 @@ export default function App() {
             )}
 
             {/* SCREEN 2: QUESTIONNAIRE */}
-            {currentPage === 'questionnaire' && (
+            {currentPath === 'questionnaire' && (
               <motion.div 
                 key="quiz"
                 initial={{ opacity: 0 }}
@@ -513,8 +652,26 @@ export default function App() {
               </motion.div>
             )}
 
+            {/* SCREEN 2.5: SEARCH */}
+            {currentPath === 'search' && (
+              <motion.div 
+                key="search"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="py-4"
+              >
+                <SearchMusic 
+                  onSearch={handleSearchQuery}
+                  loading={loading}
+                  onStandaloneLike={handleStandaloneLike}
+                  likedSongIds={likedSongs.map(s => s.id)}
+                />
+              </motion.div>
+            )}
+
             {/* SCREEN 3: RESULTS */}
-            {currentPage === 'results' && selectedSession && (
+            {currentPath === 'results' && selectedSession && (
               <motion.div 
                 key="results"
                 initial={{ opacity: 0 }}
@@ -528,14 +685,14 @@ export default function App() {
                   spotifyToken={spotifyToken}
                   onReset={() => {
                     setSelectedSession(null);
-                    setCurrentPage('questionnaire');
+                    navigate('questionnaire');
                   }}
                 />
               </motion.div>
             )}
 
             {/* SCREEN 4: PROFILE DASHBOARD */}
-            {currentPage === 'profile' && (
+            {currentPath === 'profile' && (
               <motion.div 
                 key="profile"
                 initial={{ opacity: 0 }}
@@ -558,6 +715,26 @@ export default function App() {
       <footer className="bg-zinc-950/25 border-t border-zinc-900 py-6 text-center text-xs text-zinc-500">
         <p>© 2026 SoundMind. Diseñado con cariño por investigadores de datos y psicólogos del sonido.</p>
       </footer>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-[#050505]/95 backdrop-blur-xl border-t border-white/10 z-40 px-6 py-3 flex justify-between items-center pb-4">
+        <button onClick={() => navigate('home')} className={`flex flex-col items-center gap-1 ${currentPath === 'home' ? 'text-cyan-400' : 'text-zinc-500'}`}>
+          <Headphones size={20} />
+          <span className="text-[10px] font-semibold">Inicio</span>
+        </button>
+        <button onClick={() => { setSelectedSession(null); navigate('search'); }} className={`flex flex-col items-center gap-1 ${currentPath === 'search' ? 'text-cyan-400' : 'text-zinc-500'}`}>
+          <Search size={20} />
+          <span className="text-[10px] font-semibold">Buscar</span>
+        </button>
+        <button onClick={() => { setSelectedSession(null); navigate('questionnaire'); }} className={`flex flex-col items-center gap-1 ${currentPath === 'questionnaire' ? 'text-cyan-400' : 'text-zinc-500'}`}>
+          <Sparkles size={20} />
+          <span className="text-[10px] font-semibold">Test</span>
+        </button>
+        <button onClick={() => { if(currentUser) navigate('profile'); else setIsAuthOpen(true); }} className={`flex flex-col items-center gap-1 ${currentPath === 'profile' ? 'text-cyan-400' : 'text-zinc-500'}`}>
+          <User size={20} />
+          <span className="text-[10px] font-semibold">Perfil</span>
+        </button>
+      </nav>
 
       {/* Persistent Global Audio Player */}
       <GlobalAudioPlayer />
