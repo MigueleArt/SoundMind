@@ -8,9 +8,9 @@ import {
   refresh,
   register,
   resetPassword
-} from '../controllers/auth.controller';
+} from '../controllers/auth.controller.js';
 
-import { requireAuth } from '../middleware/auth';
+import { requireAuth } from '../middleware/auth.js';
 
 export const authRouter = Router();
 

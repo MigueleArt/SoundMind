@@ -1,5 +1,5 @@
-import { supabaseAdmin } from '../config/supabase';
-import type { CreateSessionInput } from '../schemas/session.schema';
+import { supabaseAdmin } from '../config/supabase.js';
+import type { CreateSessionInput } from '../schemas/session.schema.js';
 
 export async function findOrCreateSong(song: CreateSessionInput['recommendations'][number]) {
   if (song.spotifyId) {

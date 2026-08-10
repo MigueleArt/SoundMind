@@ -13,16 +13,16 @@ import { GoogleGenAI, Type } from "@google/genai";
 import helmet from "helmet";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
-import { env } from "./backend/config/env";
-import { supabaseAdmin } from "./backend/config/supabase";
-import { authRouter } from "./backend/routes/auth.routes";
-import { historyRouter } from "./backend/routes/history.routes";
-import { sessionRouter } from "./backend/routes/session.routes";
-import { recommendationRouter } from "./backend/routes/recommendation.routes";
-import { optionalAuth } from "./backend/middleware/auth";
-import { createMusicSession, findOrCreateSong } from "./backend/services/session.service";
-import { findHistoryItem } from "./backend/repositories/history.repository";
-import { mapHistoryItem } from "./backend/services/history.service";
+import { env } from "./backend/config/env.js";
+import { supabaseAdmin } from "./backend/config/supabase.js";
+import { authRouter } from "./backend/routes/auth.routes.js";
+import { historyRouter } from "./backend/routes/history.routes.js";
+import { sessionRouter } from "./backend/routes/session.routes.js";
+import { recommendationRouter } from "./backend/routes/recommendation.routes.js";
+import { optionalAuth } from "./backend/middleware/auth.js";
+import { createMusicSession, findOrCreateSong } from "./backend/services/session.service.js";
+import { findHistoryItem } from "./backend/repositories/history.repository.js";
+import { mapHistoryItem } from "./backend/services/history.service.js";
 
 // Initialize server variables
 const app = express();

@@ -3,9 +3,9 @@ import type { Request, Response } from 'express';
 import {
   supabaseAdmin,
   supabaseAuth
-} from '../config/supabase';
+} from '../config/supabase.js';
 
-import { env } from '../config/env';
+import { env } from '../config/env.js';
 
 import {
   forgotPasswordSchema,
@@ -13,7 +13,7 @@ import {
   refreshSchema,
   registerSchema,
   resetPasswordSchema
-} from '../schemas/auth.schema';
+} from '../schemas/auth.schema.js';
 
 function validationError(res: Response, issues: unknown) {
   return res.status(400).json({

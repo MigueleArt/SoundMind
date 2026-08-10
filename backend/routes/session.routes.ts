@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { createSession } from '../controllers/session.controller';
-import { requireAuth } from '../middleware/auth';
+import { createSession } from '../controllers/session.controller.js';
+import { requireAuth } from '../middleware/auth.js';
 
 export const sessionRouter = Router();
 

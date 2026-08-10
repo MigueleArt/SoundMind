@@ -4,9 +4,9 @@ import {
   deleteHistoryItem,
   findHistoryByUser,
   findHistoryItem
-} from '../repositories/history.repository';
+} from '../repositories/history.repository.js';
 
-import { mapHistoryItem } from '../services/history.service';
+import { mapHistoryItem } from '../services/history.service.js';
 
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

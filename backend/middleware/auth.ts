@@ -4,7 +4,7 @@ import type {
   Response
 } from 'express';
 
-import { supabaseAuth } from '../config/supabase';
+import { supabaseAuth } from '../config/supabase.js';
 
 export interface AuthenticatedUser {
   id: string;

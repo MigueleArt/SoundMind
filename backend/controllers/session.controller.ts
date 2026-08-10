@@ -1,9 +1,9 @@
 import type { Request, Response } from 'express';
 
-import { createSessionSchema } from '../schemas/session.schema';
-import { createMusicSession } from '../services/session.service';
-import { findHistoryItem } from '../repositories/history.repository';
-import { mapHistoryItem } from '../services/history.service';
+import { createSessionSchema } from '../schemas/session.schema.js';
+import { createMusicSession } from '../services/session.service.js';
+import { findHistoryItem } from '../repositories/history.repository.js';
+import { mapHistoryItem } from '../services/history.service.js';
 
 export async function createSession(
   req: Request,

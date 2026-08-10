@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import NodeWebSocket from 'ws';
-import { env } from './env';
+import { env } from './env.js';
 
 /**
  * Supabase declara el transporte utilizando el tipo WebSocket del navegador,

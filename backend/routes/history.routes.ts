@@ -4,9 +4,9 @@ import {
   getHistory,
   getHistoryById,
   removeHistoryItem
-} from '../controllers/history.controller';
+} from '../controllers/history.controller.js';
 
-import { requireAuth } from '../middleware/auth';
+import { requireAuth } from '../middleware/auth.js';
 
 export const historyRouter = Router();
 

@@ -4,9 +4,9 @@ import {
   deleteFeedback,
   legacyLike,
   updateFeedback
-} from '../controllers/feedback.controller';
+} from '../controllers/feedback.controller.js';
 
-import { requireAuth } from '../middleware/auth';
+import { requireAuth } from '../middleware/auth.js';
 
 export const recommendationRouter = Router();
 
