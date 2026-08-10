@@ -8,7 +8,6 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import crypto from "crypto";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import helmet from "helmet";
 import cors from "cors";
@@ -849,6 +848,7 @@ app.post('/api/recommendations/standalone-like', optionalAuth, async (req: any, 
 if (!process.env.VERCEL) {
   async function startServer() {
     if (process.env.NODE_ENV !== 'production') {
+      const { createServer: createViteServer } = await import("vite");
       const vite = await createViteServer({
         server: {
           middlewareMode: true
