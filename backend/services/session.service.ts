@@ -1,7 +1,7 @@
 import { supabaseAdmin } from '../config/supabase';
 import type { CreateSessionInput } from '../schemas/session.schema';
 
-async function findOrCreateSong(song: CreateSessionInput['recommendations'][number]) {
+export async function findOrCreateSong(song: CreateSessionInput['recommendations'][number]) {
   if (song.spotifyId) {
     const { data } = await supabaseAdmin
       .from('songs')

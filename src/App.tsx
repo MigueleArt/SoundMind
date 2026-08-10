@@ -22,14 +22,15 @@ import GlobalAudioPlayer from './components/GlobalAudioPlayer';
 import { usePlayerStore } from './store/usePlayerStore';
 import { SongRecommendation } from './types';
 import { useRouter } from './hooks/useRouter';
+import heroImage from './assets/images/soundmind_hero_1780890480673.png';
 
 const LOADING_STEPS = [
   'Iniciando alineación del algoritmo híbrido...',
   'Filtrando base de datos y mapeando exclusiones...',
   'Vectorizando preferencias de tempo y ritmos...',
-  'Procesando textura de audio (peso en bajos/acústica)...',
-  'Interrogando al psicólogo musical Gemini...',
-  'Generando firma de perfil e interpretando espectrogamas...',
+  'Sincronizando frecuencias de estado de ánimo...',
+  'Analizando tu perfil con nuestro motor de IA...',
+  'Construyendo tu ecosistema acústico...',
   'Personalizando tus 8 recomendaciones perfectas...'
 ];
 
@@ -108,7 +109,7 @@ export default function App() {
       try {
         const parsedSession = JSON.parse(savedSession) as RecommendationHistoryItem;
         setSelectedSession(parsedSession);
-        setCurrentPage('results');
+        navigate('results');
       } catch (err) {
         localStorage.removeItem('soundmind_selected_session');
       }
@@ -172,7 +173,7 @@ export default function App() {
     setCurrentUser(null);
     setHistory([]);
     setSelectedSession(null);
-    setCurrentPage('home');
+    navigate('home');
   }
 
   // Send questionnaire answers to backend to query Gemini
@@ -205,12 +206,12 @@ export default function App() {
       }
       
       // Forzamos el cambio a la vista de resultados antes de apagar el loading
-      setCurrentPage('results');
+      navigate('results');
     } catch (error: any) {
       console.error('Error al generar recomendaciones:', error);
       alert(error?.message || 'Hubo un problema al generar las recomendaciones. Por favor, intenta de nuevo.');
       // Evitamos que vuelva a 'home', se queda en 'questionnaire'
-      setCurrentPage('questionnaire');
+      navigate('questionnaire');
     } finally {
       setLoading(false);
     }
@@ -244,11 +245,11 @@ export default function App() {
         setHistory(prev => [...prev, data]);
       }
       
-      setCurrentPage('results');
+      navigate('results');
     } catch (error: any) {
       console.error('Error al generar recomendaciones por búsqueda:', error);
       alert(error?.message || 'Hubo un problema al buscar. Por favor, intenta de nuevo.');
-      setCurrentPage('search');
+      navigate('search');
     } finally {
       setLoading(false);
     }
@@ -530,7 +531,7 @@ export default function App() {
                     <div className="relative w-80 h-80 rounded-3xl border border-white/10 bg-white/5 overflow-hidden backdrop-blur-xl flex items-center justify-center shadow-2xl p-6">
                       {/* Generated Hero Art Image in Background */}
                       <img 
-                        src="/src/assets/images/soundmind_hero_1780890480673.png" 
+                        src={heroImage} 
                         alt="SoundMind Spectrograph Background" 
                         referrerPolicy="no-referrer"
                         className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-lighten pointer-events-none"
@@ -619,7 +620,7 @@ export default function App() {
                     </div>
                     <h3 className="font-display font-medium text-white text-sm">Psicología Musical con IA</h3>
                     <p className="text-xs text-gray-400 leading-relaxed font-light">
-                      La red Gemini 3.5 traduce tu estado de ánimo sutil y la hora del día en una reseña psicológica auditiva, decodificando el timbre emocional que necesitas leer.
+                      La inteligencia artificial de SoundMind traduce tu estado de ánimo sutil y la hora del día en una reseña psicológica auditiva, decodificando el timbre emocional que necesitas escuchar.
                     </p>
                   </div>
 
@@ -665,7 +666,7 @@ export default function App() {
                   onSearch={handleSearchQuery}
                   loading={loading}
                   onStandaloneLike={handleStandaloneLike}
-                  likedSongIds={likedSongs.map(s => s.id)}
+                  likedSongs={likedSongs}
                 />
               </motion.div>
             )}

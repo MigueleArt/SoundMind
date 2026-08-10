@@ -63,10 +63,22 @@ export default function MusicResults({ session, onLikeChange, onReset, likedStat
     }
   }
 
-  function handleShare() {
-    navigator.clipboard.writeText(window.location.href);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
+  async function handleShare() {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'SoundMind',
+          text: '¡Mira mis recomendaciones musicales en SoundMind!',
+          url: window.location.href
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+      }
+    } catch (err) {
+      console.log('Cancelado o error compartiendo:', err);
+    }
   }
 
   return (

@@ -7,10 +7,10 @@ interface SearchMusicProps {
   onSearch: (query: string) => void;
   loading: boolean;
   onStandaloneLike?: (song: any) => void;
-  likedSongIds?: string[];
+  likedSongs?: any[];
 }
 
-export default function SearchMusic({ onSearch, loading, onStandaloneLike, likedSongIds }: SearchMusicProps) {
+export default function SearchMusic({ onSearch, loading, onStandaloneLike, likedSongs }: SearchMusicProps) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -131,7 +131,7 @@ export default function SearchMusic({ onSearch, loading, onStandaloneLike, liked
                 {results.map((track) => {
                   const isThisPlaying = currentSong?.id === track.trackId.toString() && isPlaying;
                   const coverImage = track.artworkUrl100?.replace('100x100bb', '600x600bb') || '';
-                  const isLiked = likedSongIds?.includes(track.trackId.toString());
+                  const isLiked = likedSongs?.some(s => s.title === track.trackName && s.artist === track.artistName);
 
                   return (
                     <div 

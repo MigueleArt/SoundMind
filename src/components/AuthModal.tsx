@@ -15,6 +15,7 @@ interface AuthModalProps {
 
 export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
   const [isRegister, setIsRegister] = useState(false);
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -27,8 +28,8 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
     e.preventDefault();
     setError('');
 
-    if (!username.trim() || !password.trim()) {
-      setError('Por favor, ingresa tu usuario y contraseña.');
+    if (!password.trim() || (isRegister ? (!username.trim() || !email.trim()) : !email.trim())) {
+      setError('Por favor, completa todos los campos requeridos.');
       return;
     }
 
@@ -40,12 +41,13 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
     setLoading(true);
     try {
       const endpoint = isRegister ? '/api/auth/register' : '/api/auth/login';
+      const payload = isRegister ? { email, username, password } : { email, password };
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
@@ -55,6 +57,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 
       onSuccess(data.token, data.user);
       onClose();
+      setEmail('');
       setUsername('');
       setPassword('');
       setConfirmPassword('');
@@ -101,21 +104,40 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1">
-              <label className="text-xs text-gray-400 font-medium">Nombre de usuario</label>
+              <label className="text-xs text-gray-400 font-medium">Correo Electrónico</label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <User size={16} />
                 </span>
                 <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="ej. melomano99"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="ej. hola@correo.com"
                   className="w-full bg-white/5 border border-white/10 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-gray-600 outline-none transition-all"
                   required
                 />
               </div>
             </div>
+
+            {isRegister && (
+              <div className="space-y-1">
+                <label className="text-xs text-gray-400 font-medium">Nombre de usuario</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                    <User size={16} />
+                  </span>
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="ej. melomano99"
+                    className="w-full bg-white/5 border border-white/10 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-gray-600 outline-none transition-all"
+                    required
+                  />
+                </div>
+              </div>
+            )}
 
             <div className="space-y-1">
               <label className="text-xs text-gray-400 font-medium">Contraseña</label>

@@ -46,7 +46,7 @@ export const loginWithSpotify = async (): Promise<void> => {
   }
 
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES)}&code_challenge_method=S256&code_challenge=${encodeURIComponent(codeChallenge)}&show_dialog=true`;
-  window.location.href = authUrl;
+  window.open(authUrl, '_blank');
 };
 
 export const getCodeFromUrl = (): string | null => {

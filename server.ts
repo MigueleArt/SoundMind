@@ -20,7 +20,7 @@ import { historyRouter } from "./backend/routes/history.routes";
 import { sessionRouter } from "./backend/routes/session.routes";
 import { recommendationRouter } from "./backend/routes/recommendation.routes";
 import { optionalAuth } from "./backend/middleware/auth";
-import { createMusicSession } from "./backend/services/session.service";
+import { createMusicSession, findOrCreateSong } from "./backend/services/session.service";
 import { findHistoryItem } from "./backend/repositories/history.repository";
 import { mapHistoryItem } from "./backend/services/history.service";
 
@@ -552,6 +552,298 @@ Genera canciones reales y un perfil altamente profesional y poético pero precis
     }
   },
 );
+
+// 5.1 Generate Recommendation by Search
+app.post('/api/recommendations/search', optionalAuth, async (req: any, res) => {
+  const { query } = req.body;
+  if (!query) {
+    return res.status(400).json({ error: 'Consulta de búsqueda faltante' });
+  }
+
+  try {
+    const systemPrompt = `Eres un motor avanzado de recomendación musical y psicólogo del sonido llamado "SoundMind".
+Analizarás la canción o artista buscado por el usuario y generarás:
+1. Un perfil psicológico musical personalizado.
+2. Un mapeo de las preferencias del usuario a métricas de ciencia de datos musicales de 0 a 100 (valence, energy, tempo, acousticness, instrumentalness, danceability).
+3. Una lista de exactamente 8 canciones reales similares con sus respectivos detalles incluyendo por qué encajan.
+
+Debes responder estrictamente en formato JSON utilizando el esquema especificado. NO incluyas markdown, solo responde con el objeto de datos. Las canciones deben ser reales.`;
+
+    const userInstructions = `El usuario ha buscado la canción, artista o género: "${query}".
+Genera canciones reales similares y un perfil altamente profesional y poético pero preciso que describa la vibra de esta búsqueda.`;
+
+    let recommendationData: any = null;
+
+    if (process.env.GEMINI_API_KEY) {
+      try {
+        const response = await ai.models.generateContent({
+          model: 'gemini-3.5-flash',
+          contents: [
+            { text: userInstructions }
+          ],
+          config: {
+            systemInstruction: systemPrompt,
+            responseMimeType: 'application/json',
+            responseSchema: {
+              type: Type.OBJECT,
+              required: ['description', 'dominantGenres', 'vibes', 'attributes', 'songs'],
+              properties: {
+                description: { type: Type.STRING, description: 'Descripción de perfil musical detallada y personalizada en español, de 2 a 3 oraciones.' },
+                dominantGenres: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Los 3 o 4 géneros musicales dominantes para este estado de ánimo y preferencia.' },
+                vibes: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Etiquetas de vibras u ondas musicales (ej. Introspectivo, Chill, Dinámico, Underground).' },
+                attributes: {
+                  type: Type.OBJECT,
+                  required: ['valence', 'energy', 'tempo', 'acousticness', 'instrumentalness', 'danceability'],
+                  properties: {
+                    valence: { type: Type.INTEGER, description: 'Grado de felicidad/positividad musical de 0 a 100.' },
+                    energy: { type: Type.INTEGER, description: 'Intensidad o energía del sonido de 0 a 100.' },
+                    tempo: { type: Type.INTEGER, description: 'BPM estimado de las canciones ideales (ej. 60-180).' },
+                    acousticness: { type: Type.INTEGER, description: 'Porcentaje de preferencia acústica de 0 a 100.' },
+                    instrumentalness: { type: Type.INTEGER, description: 'Porcentaje de enfoque instrumental de 0 a 100.' },
+                    danceability: { type: Type.INTEGER, description: 'Ritmicidad o capacidad bailable de 0 a 100.' }
+                  }
+                },
+                songs: {
+                  type: Type.ARRAY,
+                  items: {
+                    type: Type.OBJECT,
+                    required: ['title', 'artist', 'album', 'genres', 'score', 'whyRecommend'],
+                    properties: {
+                      title: { type: Type.STRING, description: 'Nombre de la canción real (ej. "Intro").' },
+                      artist: { type: Type.STRING, description: 'Nombre del artista/banda real (ej. "The xx").' },
+                      album: { type: Type.STRING, description: 'Nombre del álbum real de esa canción.' },
+                      genres: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Géneros de esta canción.' },
+                      score: { type: Type.INTEGER, description: 'Afinidad aproximada con el perfil de 0 a 100.' },
+                      whyRecommend: { type: Type.STRING, description: 'Explicación de una oración en español sobre por qué encaja perfectamente en este contexto.' }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+        recommendationData = JSON.parse(response.text || '{}');
+      } catch (err) {
+        console.error('Gemini API call failed for search, falling back to local engine:', err);
+      }
+    }
+
+    if (!recommendationData || !recommendationData.songs) {
+      recommendationData = {
+        description: `Basado en tu búsqueda de "${query}", hemos construido este perfil acústico. Debido a la ausencia de la API Key, este es un mapeo de respaldo local.`,
+        dominantGenres: ['Pop', 'Indie', 'Rock'],
+        vibes: ['Similar', 'Curado', 'Local'],
+        attributes: {
+          valence: 60,
+          energy: 60,
+          tempo: 120,
+          acousticness: 40,
+          instrumentalness: 20,
+          danceability: 60
+        },
+        songs: [
+          { title: 'Blinding Lights', artist: 'The Weeknd', album: 'Grandes Éxitos', genres: ['pop'], score: 90, whyRecommend: `Similar a ${query}` },
+          { title: 'Midnight City', artist: 'M83', album: 'Grandes Éxitos', genres: ['electronic'], score: 85, whyRecommend: `Similar a ${query}` },
+          { title: 'As It Was', artist: 'Harry Styles', album: 'Grandes Éxitos', genres: ['pop'], score: 88, whyRecommend: `Similar a ${query}` },
+          { title: 'Tusa', artist: 'Karol G', album: 'Grandes Éxitos', genres: ['reggaeton'], score: 82, whyRecommend: `Similar a ${query}` },
+        ]
+      };
+    }
+
+    const enhancedSongs = recommendationData.songs.map((song: any) => {
+      const songId = `song-${crypto.randomBytes(4).toString('hex')}`;
+      const searchTerms = `${song.title} ${song.artist}`;
+      return {
+        ...song,
+        id: songId,
+        coverUrl: getRandomCover(song.genres || recommendationData.dominantGenres),
+        spotifyUrl: `https://open.spotify.com/search/${encodeURIComponent(searchTerms)}`,
+        attributes: {
+          valence: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.valence + (Math.random() * 20 - 10)))),
+          energy: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.energy + (Math.random() * 20 - 10)))),
+          tempo: Math.max(50, Math.min(180, Math.floor(recommendationData.attributes.tempo + (Math.random() * 30 - 15)))),
+          acousticness: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.acousticness + (Math.random() * 20 - 10)))),
+          instrumentalness: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.instrumentalness + (Math.random() * 20 - 10)))),
+          danceability: Math.max(0, Math.min(100, Math.floor(recommendationData.attributes.danceability + (Math.random() * 20 - 10)))),
+        }
+      };
+    });
+
+    const finalProfile = {
+      description: recommendationData.description,
+      dominantGenres: recommendationData.dominantGenres,
+      vibes: recommendationData.vibes,
+      attributes: recommendationData.attributes,
+      createdAt: new Date().toISOString()
+    };
+
+    const answers = {
+        mood: 'alegre',
+        activity: 'search',
+        timeOfDay: 'any',
+        genres: recommendationData.dominantGenres,
+        vocalPreference: 'ambas',
+        languages: ['espanol', 'ingles'],
+        rhythmSpeed: 3,
+        vocalsType: 'sin-preferencia',
+        instruments: [],
+        bassWeight: 'medio',
+        stylePreference: 'ambas',
+        recentFavorites: [],
+        exclusions: '',
+        searchQuery: query
+    };
+
+    if (!req.authUser) {
+      return res.json({
+        id: `temporary-${crypto.randomBytes(6).toString("hex")}`,
+        createdAt: new Date().toISOString(),
+        answers,
+        profile: finalProfile,
+        recommendations: enhancedSongs,
+        likes: {},
+      });
+    }
+
+    const sessionId = await createMusicSession(req.authUser.id, {
+      answers,
+      profile: finalProfile,
+      recommendations: enhancedSongs,
+    });
+
+    const { data: savedSession, error: savedSessionError } =
+      await findHistoryItem(req.authUser.id, sessionId);
+
+    if (savedSessionError || !savedSession) {
+      console.error("Saved session retrieval error:", savedSessionError);
+      return res.status(201).json({
+        id: sessionId,
+        createdAt: new Date().toISOString(),
+        answers,
+        profile: finalProfile,
+        recommendations: enhancedSongs,
+        likes: {},
+      });
+    }
+
+    return res.json(mapHistoryItem(savedSession, req.authUser.id));
+  } catch (error) {
+    console.error('Error generating search recommendations:', error);
+    res.status(500).json({ error: 'Hubo un error al procesar tu búsqueda. Por favor, intenta de nuevo.' });
+  }
+});
+
+// 7. Standalone Like (From Search Results)
+app.post('/api/recommendations/standalone-like', optionalAuth, async (req: any, res) => {
+  const { song } = req.body;
+  if (!song || !song.id) {
+    return res.status(400).json({ error: 'Song missing' });
+  }
+
+  if (!req.authUser) {
+    return res.status(401).json({ error: 'Debes iniciar sesión para dar me gusta' });
+  }
+
+  // Ensure song has attributes to prevent TypeError in createMusicSession
+  if (!song.attributes) {
+    song.attributes = {
+      valence: 50,
+      energy: 50,
+      tempo: 120,
+      acousticness: 50,
+      instrumentalness: 50,
+      danceability: 50
+    };
+  }
+
+  try {
+    const dbSongId = await findOrCreateSong(song);
+
+    const { data: sessions, error } = await supabaseAdmin
+      .from('music_sessions')
+      .select('*')
+      .eq('user_id', req.authUser.id)
+      .eq('activity', 'standalone_likes')
+      .limit(1);
+
+    let sessionId: string;
+    
+    if (error || !sessions || sessions.length === 0) {
+      const newSession = {
+        answers: { activity: 'standalone_likes', mood: 'any', timeOfDay: 'any', genres: [], vocalPreference: 'ambas', languages: [], rhythmSpeed: 3, vocalsType: 'sin-preferencia', instruments: [], bassWeight: 'medio', stylePreference: 'ambas', recentFavorites: [], exclusions: '' },
+        profile: { description: 'Búsquedas sueltas guardadas como favoritas.', dominantGenres: [], vibes: [], attributes: { valence: 50, energy: 50, tempo: 120, acousticness: 50, instrumentalness: 50, danceability: 50 }, createdAt: new Date().toISOString() },
+        recommendations: [song],
+      };
+      
+      sessionId = await createMusicSession(req.authUser.id, newSession);
+    } else {
+      sessionId = sessions[0].id;
+      
+      const { data: existingRec } = await supabaseAdmin
+        .from('recommendations')
+        .select('*')
+        .eq('session_id', sessionId)
+        .eq('song_id', dbSongId)
+        .maybeSingle();
+        
+      if (!existingRec) {
+        const { data: maxPosData } = await supabaseAdmin
+          .from('recommendations')
+          .select('position')
+          .eq('session_id', sessionId)
+          .order('position', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+          
+        const nextPosition = (maxPosData?.position || 0) + 1;
+        
+        await supabaseAdmin
+          .from('recommendations')
+          .insert({
+            session_id: sessionId,
+            song_id: dbSongId,
+            score: song.score || 100,
+            why_recommend: song.whyRecommend || 'Liked from search',
+            position: nextPosition,
+            valence: song.attributes?.valence || 50,
+            energy: song.attributes?.energy || 50,
+            tempo: song.attributes?.tempo || 120,
+            acousticness: song.attributes?.acousticness || 50,
+            instrumentalness: song.attributes?.instrumentalness || 50,
+            danceability: song.attributes?.danceability || 50
+          });
+      }
+    }
+    
+    const { data: feedbackData } = await supabaseAdmin
+      .from('feedbacks')
+      .select('*')
+      .eq('session_id', sessionId)
+      .eq('song_id', dbSongId)
+      .maybeSingle();
+        
+    if (feedbackData) {
+      await supabaseAdmin
+        .from('feedbacks')
+        .update({ is_liked: !feedbackData.is_liked })
+        .eq('id', feedbackData.id);
+    } else {
+      await supabaseAdmin
+        .from('feedbacks')
+        .insert({
+          session_id: sessionId,
+          song_id: dbSongId,
+          is_liked: true
+        });
+    }
+      
+    const { data: savedSession } = await findHistoryItem(req.authUser.id, sessionId);
+    return res.json({ success: true, session: mapHistoryItem(savedSession, req.authUser.id) });
+  } catch (err) {
+    console.error('Error handling standalone like:', err);
+    return res.status(500).json({ error: 'Server error' });
+  }
+});
 
 if (!process.env.VERCEL) {
   async function startServer() {
