@@ -25,6 +25,7 @@ export interface QuestionnaireAnswers {
   stylePreference: 'acustico' | 'electronico' | 'ambas';
   recentFavorites: string[]; // Up to 3 songs or artists
   exclusions: string;
+  searchQuery?: string;
 }
 
 export interface SongRecommendation {
@@ -35,6 +36,9 @@ export interface SongRecommendation {
   coverUrl: string;
   genres: string[];
   spotifyUrl: string;
+  spotifyUri?: string;
+  previewUrl?: string;
+  albumArt?: string;
   score: number; // Confidence score (0 to 100)
   attributes: {
     valence: number; // 0-100
