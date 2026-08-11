@@ -74,3 +74,42 @@ export interface RecommendationHistoryItem {
   recommendations: SongRecommendation[];
   likes: Record<string, boolean>; // songId -> true (like) / false (dislike)
 }
+// Estructura del Usuario
+export interface User {
+  id: string;
+  email: string;
+  username: string;
+  fullName: string;
+  avatarUrl?: string;
+}
+
+// Tokens de Autenticación
+export interface AuthTokens {
+  token: string;
+  refreshToken: string;
+}
+
+// Respuesta de la API al iniciar sesión o registrarse
+export interface AuthResponse {
+  user: User;
+  tokens: AuthTokens;
+}
+
+// Petición de Iniciar Sesión
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+// Petición de Registro
+export interface RegisterCredentials {
+  email: string;
+  username: string;
+  fullName: string;
+  password: string;
+}
+
+// Petición de Recuperación de Contraseña
+export interface ForgotPasswordCredentials {
+  email: string;
+}
